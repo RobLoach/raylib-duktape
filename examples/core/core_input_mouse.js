@@ -27,6 +27,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
 {
     // Update
     //----------------------------------------------------------------------------------
+
     ballPosition = GetMousePosition()
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -38,6 +39,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
     else if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) {
         ballColor = DARKBLUE
     }
+
     //----------------------------------------------------------------------------------
 
     // Draw
