@@ -7,6 +7,7 @@
 #include <dukglue/dukglue.h>
 #include <dukglue/detail_primitive_types.h>
 
+
 template<>
 struct dukglue::types::DukType<Vector2> {
     typedef std::true_type IsValueType;
@@ -18,17 +19,17 @@ struct dukglue::types::DukType<Vector2> {
         }
         Vector2 out;
         duk_get_prop_string(ctx, arg_idx, "x");
-        out.x = duk_get_int(ctx, -1);
+        out.x = duk_get_number(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "y");
-        out.y = duk_get_int(ctx, -1);
+        out.y = duk_get_number(ctx, -1);
         return out;
     }
     template<typename FullT>
     static void push(duk_context* ctx, Vector2 value) {
         duk_idx_t obj_idx = duk_push_object(ctx);
-        duk_push_int(ctx, value.x);
+        duk_push_number(ctx, value.x);
         duk_put_prop_string(ctx, obj_idx, "x");
-        duk_push_int(ctx, value.y);
+        duk_push_number(ctx, value.y);
         duk_put_prop_string(ctx, obj_idx, "y");
         duk_pop(ctx);
     }
@@ -36,53 +37,82 @@ struct dukglue::types::DukType<Vector2> {
 
 template<>
 struct dukglue::types::DukType<Color> {
-	typedef std::true_type IsValueType;
-	template<typename FullT>
-	static Color read(duk_context* ctx, duk_idx_t arg_idx) {
-		if (!duk_is_object(ctx, arg_idx)) {
-			duk_int_t type_idx = duk_get_type(ctx, arg_idx);
-			duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
-		}
-		Color out;
-		duk_get_prop_string(ctx, arg_idx, "r");
-		out.r = duk_get_int(ctx, -1);
-		duk_get_prop_string(ctx, arg_idx, "g");
-		out.g = duk_get_int(ctx, -1);
-		duk_get_prop_string(ctx, arg_idx, "b");
-		out.b = duk_get_int(ctx, -1);
-		duk_get_prop_string(ctx, arg_idx, "a");
-		out.a = duk_get_int(ctx, -1);
-		return out;
-	}
-	template<typename FullT>
-	static void push(duk_context* ctx, Color value) {
-		duk_idx_t obj_idx = duk_push_object(ctx);
-		duk_push_int(ctx, value.r);
-		duk_put_prop_string(ctx, obj_idx, "r");
-		duk_push_int(ctx, value.g);
-		duk_put_prop_string(ctx, obj_idx, "g");
-		duk_push_int(ctx, value.b);
-		duk_put_prop_string(ctx, obj_idx, "b");
-		duk_push_int(ctx, value.a);
-		duk_put_prop_string(ctx, obj_idx, "a");
-		duk_pop(ctx);
-	}
+    typedef std::true_type IsValueType;
+    template<typename FullT>
+    static Color read(duk_context* ctx, duk_idx_t arg_idx) {
+        if (!duk_is_object(ctx, arg_idx)) {
+            duk_int_t type_idx = duk_get_type(ctx, arg_idx);
+            duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
+        }
+        Color out;
+        duk_get_prop_string(ctx, arg_idx, "r");
+        out.r = duk_get_int(ctx, -1);
+        duk_get_prop_string(ctx, arg_idx, "g");
+        out.g = duk_get_int(ctx, -1);
+        duk_get_prop_string(ctx, arg_idx, "b");
+        out.b = duk_get_int(ctx, -1);
+        duk_get_prop_string(ctx, arg_idx, "a");
+        out.a = duk_get_int(ctx, -1);
+        return out;
+    }
+    template<typename FullT>
+    static void push(duk_context* ctx, Color value) {
+        duk_idx_t obj_idx = duk_push_object(ctx);
+        duk_push_int(ctx, value.r);
+        duk_put_prop_string(ctx, obj_idx, "r");
+        duk_push_int(ctx, value.g);
+        duk_put_prop_string(ctx, obj_idx, "g");
+        duk_push_int(ctx, value.b);
+        duk_put_prop_string(ctx, obj_idx, "b");
+        duk_push_int(ctx, value.a);
+        duk_put_prop_string(ctx, obj_idx, "a");
+        duk_pop(ctx);
+    }
 };
 
 std::string raylib_js_variablestring(Color c, std::string name) {
     return std::string("const ") + name +
-        std::string("={r:") + std::to_string(c.r) +
+        std::string(" = {r:") + std::to_string(c.r) +
         std::string(",g:") + std::to_string(c.g) +
         std::string(",b:") + std::to_string(c.b) +
         std::string(",a:") + std::to_string(c.a) +
-        std::string("};");
+        std::string("};\n");
 }
 
 void raylib_js_defines(duk_context* ctx) {
-    dukglue_register_global(ctx, PI, "PI");
-    dukglue_register_global(ctx, MAX_TOUCH_POINTS, "MAX_TOUCH_POINTS");
-    dukglue_register_global(ctx, MAX_SHADER_LOCATIONS, "MAX_SHADER_LOCATIONS");
-    dukglue_register_global(ctx, MAX_MATERIAL_MAPS, "MAX_MATERIAL_MAPS");
+    std::string constants;
+    constants += raylib_js_variablestring(LIGHTGRAY, "LIGHTGRAY");
+    constants += raylib_js_variablestring(GRAY, "GRAY");
+    constants += raylib_js_variablestring(DARKGRAY, "DARKGRAY");
+    constants += raylib_js_variablestring(YELLOW, "YELLOW");
+    constants += raylib_js_variablestring(GOLD, "GOLD");
+    constants += raylib_js_variablestring(ORANGE, "ORANGE");
+    constants += raylib_js_variablestring(PINK, "PINK");
+    constants += raylib_js_variablestring(RED, "RED");
+    constants += raylib_js_variablestring(MAROON, "MAROON");
+    constants += raylib_js_variablestring(GREEN, "GREEN");
+    constants += raylib_js_variablestring(LIME, "LIME");
+    constants += raylib_js_variablestring(DARKGREEN, "DARKGREEN");
+    constants += raylib_js_variablestring(SKYBLUE, "SKYBLUE");
+    constants += raylib_js_variablestring(BLUE, "BLUE");
+    constants += raylib_js_variablestring(DARKBLUE, "DARKBLUE");
+    constants += raylib_js_variablestring(PURPLE, "PURPLE");
+    constants += raylib_js_variablestring(VIOLET, "VIOLET");
+    constants += raylib_js_variablestring(DARKPURPLE, "DARKPURPLE");
+    constants += raylib_js_variablestring(BEIGE, "BEIGE");
+    constants += raylib_js_variablestring(BROWN, "BROWN");
+    constants += raylib_js_variablestring(DARKBROWN, "DARKBROWN");
+    constants += raylib_js_variablestring(WHITE, "WHITE");
+    constants += raylib_js_variablestring(BLACK, "BLACK");
+    constants += raylib_js_variablestring(BLANK, "BLANK");
+    constants += raylib_js_variablestring(MAGENTA, "MAGENTA");
+    constants += raylib_js_variablestring(RAYWHITE, "RAYWHITE");
+    duk_eval_string(ctx, constants.c_str());
+
+    dukglue_register_global(ctx, (float)PI, "PI");
+    dukglue_register_global(ctx, (int)MAX_TOUCH_POINTS, "MAX_TOUCH_POINTS");
+    dukglue_register_global(ctx, (int)MAX_SHADER_LOCATIONS, "MAX_SHADER_LOCATIONS");
+    dukglue_register_global(ctx, (int)MAX_MATERIAL_MAPS, "MAX_MATERIAL_MAPS");
     dukglue_register_global(ctx, (int)FLAG_SHOW_LOGO, "FLAG_SHOW_LOGO");
     dukglue_register_global(ctx, (int)FLAG_FULLSCREEN_MODE, "FLAG_FULLSCREEN_MODE");
     dukglue_register_global(ctx, (int)FLAG_WINDOW_RESIZABLE, "FLAG_WINDOW_RESIZABLE");
@@ -320,34 +350,6 @@ void raylib_js_defines(duk_context* ctx) {
     dukglue_register_global(ctx, (int)NPT_3PATCH_VERTICAL, "NPT_3PATCH_VERTICAL");
     dukglue_register_global(ctx, (int)NPT_3PATCH_HORIZONTAL, "NPT_3PATCH_HORIZONTAL");
 
-    std::string constants;
-    constants += raylib_js_variablestring(LIGHTGRAY, "LIGHTGRAY");
-    constants += raylib_js_variablestring(GRAY, "GRAY");
-    constants += raylib_js_variablestring(DARKGRAY, "DARKGRAY");
-    constants += raylib_js_variablestring(YELLOW, "YELLOW");
-    constants += raylib_js_variablestring(GOLD, "GOLD");
-    constants += raylib_js_variablestring(ORANGE, "ORANGE");
-    constants += raylib_js_variablestring(PINK, "PINK");
-    constants += raylib_js_variablestring(RED, "RED");
-    constants += raylib_js_variablestring(MAROON, "MAROON");
-    constants += raylib_js_variablestring(GREEN, "GREEN");
-    constants += raylib_js_variablestring(LIME, "LIME");
-    constants += raylib_js_variablestring(DARKGREEN, "DARKGREEN");
-    constants += raylib_js_variablestring(SKYBLUE, "SKYBLUE");
-    constants += raylib_js_variablestring(BLUE, "BLUE");
-    constants += raylib_js_variablestring(DARKBLUE, "DARKBLUE");
-    constants += raylib_js_variablestring(PURPLE, "PURPLE");
-    constants += raylib_js_variablestring(VIOLET, "VIOLET");
-    constants += raylib_js_variablestring(DARKPURPLE, "DARKPURPLE");
-    constants += raylib_js_variablestring(BEIGE, "BEIGE");
-    constants += raylib_js_variablestring(BROWN, "BROWN");
-    constants += raylib_js_variablestring(DARKBROWN, "DARKBROWN");
-    constants += raylib_js_variablestring(WHITE, "WHITE");
-    constants += raylib_js_variablestring(BLACK, "BLACK");
-    constants += raylib_js_variablestring(BLANK, "BLANK");
-    constants += raylib_js_variablestring(MAGENTA, "MAGENTA");
-    constants += raylib_js_variablestring(RAYWHITE, "RAYWHITE");
-    duk_eval_string(ctx, constants.c_str());
 }
 
 void raylib_js_context(duk_context* ctx) {
@@ -363,6 +365,7 @@ void raylib_js_context(duk_context* ctx) {
 	dukglue_register_function(ctx, &CloseWindow, "CloseWindow");
     dukglue_register_function(ctx, &GetMousePosition, "GetMousePosition");
     dukglue_register_function(ctx, &IsMouseButtonPressed, "IsMouseButtonPressed");
+    dukglue_register_function(ctx, &DrawCircleV, "DrawCircleV");
 }
 
 #endif

@@ -14,9 +14,9 @@
 const screenWidth = 800
 const screenHeight = 450
 
-InitWindow(screenWidth, screenHeight, "raylib [core] example - mouse input");
+InitWindow(screenWidth, screenHeight, "raylib [core] example - mouse input")
 
-var ballPosition = { x: -100, y: -100 };
+var ballPosition = {x:-100, y:-100}
 var ballColor = DARKBLUE;
 
 SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
@@ -29,9 +29,15 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
     //----------------------------------------------------------------------------------
     ballPosition = GetMousePosition()
 
-    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) ballColor = MAROON
-    else if (IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON)) ballColor = LIME
-    else if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) ballColor = DARKBLUE
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        ballColor = MAROON
+    }
+    else if (IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON)) {
+        ballColor = LIME
+    }
+    else if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) {
+        ballColor = DARKBLUE
+    }
     //----------------------------------------------------------------------------------
 
     // Draw
