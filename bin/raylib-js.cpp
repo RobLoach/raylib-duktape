@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 #include <duktape.h>
-#include "../include/raylib-js.h"
+#include "raylib-js.h"
 
 int main(int argc, char *argv[])
 {

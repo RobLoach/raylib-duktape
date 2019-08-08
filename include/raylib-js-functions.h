@@ -37,6 +37,7 @@ void raylib_js_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &IsCursorHidden, "IsCursorHidden");
     dukglue_register_function(ctx, &EnableCursor, "EnableCursor");
     dukglue_register_function(ctx, &DisableCursor, "DisableCursor");
+    dukglue_register_function(ctx, &ClearBackground, "ClearBackground");
     dukglue_register_function(ctx, &BeginDrawing, "BeginDrawing");
     dukglue_register_function(ctx, &EndDrawing, "EndDrawing");
     //dukglue_register_function(ctx, &BeginMode2D, "BeginMode2D");

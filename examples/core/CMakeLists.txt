@@ -1,1 +1,0 @@
-configure_file(core_basic_window.js core_basic_window.js COPYONLY)

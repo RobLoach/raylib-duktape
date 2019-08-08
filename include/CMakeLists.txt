@@ -2,6 +2,9 @@ add_library(raylib-js-h INTERFACE)
 
 set(RAYLIBJS_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js-functions.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js-globals.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js-structs.h
 )
 
 install(FILES
