@@ -327,6 +327,30 @@ struct DukType<Texture2D> {
     }
 };
 
+// TODO: Add RenderTexture2D
+// TODO: Add NPatchInfo
+// TODO: Add CharInfo
+// TODO: Add Font
+// TODO: Add Camera3D
+// TODO: Add Camera2D
+// TODO: Add Mesh
+// TODO: Add Shader
+// TODO: Add MaterialMap
+// TODO: Add Material
+// TODO: Add Transform
+// TODO: Add BoneInfo
+// TODO: Add Model
+// TODO: Add ModelAnimation
+// TODO: Add Ray
+// TODO: Add RayHitInfo
+// TODO: Add BoundingBox
+// TODO: Add Wave
+// TODO: Add rAudioBuffer
+// TODO: Add AudioStream
+// TODO: Add Sound
+// TODO: Add Music
+// TODO: Add VrDeviceInfo
+
 }
 }
 

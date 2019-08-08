@@ -5,7 +5,7 @@
 #include <duktape.h>
 #include <dukglue/dukglue.h>
 
-void raylib_js_functions(duk_context* ctx) {
+void raylib_js_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &InitWindow, "InitWindow");
     dukglue_register_function(ctx, &WindowShouldClose, "WindowShouldClose");
     dukglue_register_function(ctx, &CloseWindow, "CloseWindow");
@@ -22,7 +22,7 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &SetWindowMonitor, "SetWindowMonitor");
     dukglue_register_function(ctx, &SetWindowMinSize, "SetWindowMinSize");
     dukglue_register_function(ctx, &SetWindowSize, "SetWindowSize");
-    dukglue_register_function(ctx, &GetWindowHandle, "GetWindowHandle");
+    //dukglue_register_function(ctx, &GetWindowHandle, "GetWindowHandle");
     dukglue_register_function(ctx, &GetScreenWidth, "GetScreenWidth");
     dukglue_register_function(ctx, &GetScreenHeight, "GetScreenHeight");
     dukglue_register_function(ctx, &GetMonitorCount, "GetMonitorCount");
@@ -39,15 +39,15 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &DisableCursor, "DisableCursor");
     dukglue_register_function(ctx, &BeginDrawing, "BeginDrawing");
     dukglue_register_function(ctx, &EndDrawing, "EndDrawing");
-    dukglue_register_function(ctx, &BeginMode2D, "BeginMode2D");
+    //dukglue_register_function(ctx, &BeginMode2D, "BeginMode2D");
     dukglue_register_function(ctx, &EndMode2D, "EndMode2D");
-    dukglue_register_function(ctx, &BeginMode3D, "BeginMode3D");
+    //dukglue_register_function(ctx, &BeginMode3D, "BeginMode3D");
     dukglue_register_function(ctx, &EndMode3D, "EndMode3D");
-    dukglue_register_function(ctx, &BeginTextureMode, "BeginTextureMode");
+    //dukglue_register_function(ctx, &BeginTextureMode, "BeginTextureMode");
     dukglue_register_function(ctx, &EndTextureMode, "EndTextureMode");
-    dukglue_register_function(ctx, &GetMouseRay, "GetMouseRay");
-    dukglue_register_function(ctx, &GetWorldToScreen, "GetWorldToScreen");
-    dukglue_register_function(ctx, &GetCameraMatrix, "GetCameraMatrix");
+    //dukglue_register_function(ctx, &GetMouseRay, "GetMouseRay");
+    //dukglue_register_function(ctx, &GetWorldToScreen, "GetWorldToScreen");
+    //dukglue_register_function(ctx, &GetCameraMatrix, "GetCameraMatrix");
     dukglue_register_function(ctx, &SetTargetFPS, "SetTargetFPS");
     dukglue_register_function(ctx, &GetFPS, "GetFPS");
     dukglue_register_function(ctx, &GetFrameTime, "GetFrameTime");
@@ -78,11 +78,11 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &GetDirectoryPath, "GetDirectoryPath");
     dukglue_register_function(ctx, &GetPrevDirectoryPath, "GetPrevDirectoryPath");
     dukglue_register_function(ctx, &GetWorkingDirectory, "GetWorkingDirectory");
-    dukglue_register_function(ctx, &GetDirectoryFiles, "GetDirectoryFiles");
+    //dukglue_register_function(ctx, &GetDirectoryFiles, "GetDirectoryFiles");
     dukglue_register_function(ctx, &ClearDirectoryFiles, "ClearDirectoryFiles");
     dukglue_register_function(ctx, &ChangeDirectory, "ChangeDirectory");
     dukglue_register_function(ctx, &IsFileDropped, "IsFileDropped");
-    dukglue_register_function(ctx, &GetDroppedFiles, "GetDroppedFiles");
+    //dukglue_register_function(ctx, &GetDroppedFiles, "GetDroppedFiles");
     dukglue_register_function(ctx, &ClearDroppedFiles, "ClearDroppedFiles");
     dukglue_register_function(ctx, &GetFileModTime, "GetFileModTime");
     dukglue_register_function(ctx, &StorageSaveValue, "StorageSaveValue");
@@ -127,19 +127,19 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &GetGestureDragAngle, "GetGestureDragAngle");
     dukglue_register_function(ctx, &GetGesturePinchVector, "GetGesturePinchVector");
     dukglue_register_function(ctx, &GetGesturePinchAngle, "GetGesturePinchAngle");
-    dukglue_register_function(ctx, &SetCameraMode, "SetCameraMode");
-    dukglue_register_function(ctx, &UpdateCamera, "UpdateCamera");
-    dukglue_register_function(ctx, &SetCameraPanControl, "SetCameraPanControl");
-    dukglue_register_function(ctx, &SetCameraAltControl, "SetCameraAltControl");
-    dukglue_register_function(ctx, &SetCameraSmoothZoomControl, "SetCameraSmoothZoomControl");
-    dukglue_register_function(ctx, &SetCameraMoveControls, "SetCameraMoveControls");
+    //dukglue_register_function(ctx, &SetCameraMode, "SetCameraMode");
+    //dukglue_register_function(ctx, &UpdateCamera, "UpdateCamera");
+    //dukglue_register_function(ctx, &SetCameraPanControl, "SetCameraPanControl");
+    //dukglue_register_function(ctx, &SetCameraAltControl, "SetCameraAltControl");
+    //dukglue_register_function(ctx, &SetCameraSmoothZoomControl, "SetCameraSmoothZoomControl");
+    //dukglue_register_function(ctx, &SetCameraMoveControls, "SetCameraMoveControls");
     dukglue_register_function(ctx, &DrawPixel, "DrawPixel");
     dukglue_register_function(ctx, &DrawPixelV, "DrawPixelV");
     dukglue_register_function(ctx, &DrawLine, "DrawLine");
     dukglue_register_function(ctx, &DrawLineV, "DrawLineV");
-    dukglue_register_function(ctx, &DrawLineEx, "DrawLineEx");
+    //dukglue_register_function(ctx, &DrawLineEx, "DrawLineEx");
     dukglue_register_function(ctx, &DrawLineBezier, "DrawLineBezier");
-    dukglue_register_function(ctx, &DrawLineStrip, "DrawLineStrip");
+    //dukglue_register_function(ctx, &DrawLineStrip, "DrawLineStrip");
     dukglue_register_function(ctx, &DrawCircle, "DrawCircle");
     dukglue_register_function(ctx, &DrawCircleSector, "DrawCircleSector");
     dukglue_register_function(ctx, &DrawCircleSectorLines, "DrawCircleSectorLines");
@@ -161,8 +161,8 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawRectangleRoundedLines, "DrawRectangleRoundedLines");
     dukglue_register_function(ctx, &DrawTriangle, "DrawTriangle");
     dukglue_register_function(ctx, &DrawTriangleLines, "DrawTriangleLines");
-    dukglue_register_function(ctx, &DrawTriangleFan, "DrawTriangleFan");
-    dukglue_register_function(ctx, &DrawTriangleStrip, "DrawTriangleStrip");
+    //dukglue_register_function(ctx, &DrawTriangleFan, "DrawTriangleFan");
+    //dukglue_register_function(ctx, &DrawTriangleStrip, "DrawTriangleStrip");
     dukglue_register_function(ctx, &DrawPoly, "DrawPoly");
     dukglue_register_function(ctx, &SetShapesTexture, "SetShapesTexture");
     dukglue_register_function(ctx, &CheckCollisionRecs, "CheckCollisionRecs");
@@ -173,27 +173,28 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &CheckCollisionPointCircle, "CheckCollisionPointCircle");
     dukglue_register_function(ctx, &CheckCollisionPointTriangle, "CheckCollisionPointTriangle");
     dukglue_register_function(ctx, &LoadImage, "LoadImage");
-    dukglue_register_function(ctx, &LoadImageEx, "LoadImageEx");
-    dukglue_register_function(ctx, &LoadImagePro, "LoadImagePro");
+    //dukglue_register_function(ctx, &LoadImageEx, "LoadImageEx");
+    //dukglue_register_function(ctx, &LoadImagePro, "LoadImagePro");
     dukglue_register_function(ctx, &LoadImageRaw, "LoadImageRaw");
     dukglue_register_function(ctx, &ExportImage, "ExportImage");
     dukglue_register_function(ctx, &ExportImageAsCode, "ExportImageAsCode");
     dukglue_register_function(ctx, &LoadTexture, "LoadTexture");
     dukglue_register_function(ctx, &LoadTextureFromImage, "LoadTextureFromImage");
     dukglue_register_function(ctx, &LoadTextureCubemap, "LoadTextureCubemap");
-    dukglue_register_function(ctx, &LoadRenderTexture, "LoadRenderTexture");
+    //dukglue_register_function(ctx, &LoadRenderTexture, "LoadRenderTexture");
     dukglue_register_function(ctx, &UnloadImage, "UnloadImage");
     dukglue_register_function(ctx, &UnloadTexture, "UnloadTexture");
-    dukglue_register_function(ctx, &UnloadRenderTexture, "UnloadRenderTexture");
-    dukglue_register_function(ctx, &GetImageData, "GetImageData");
-    dukglue_register_function(ctx, &GetImageDataNormalized, "GetImageDataNormalized");
-    dukglue_register_function(ctx, &GetImageAlphaBorder, "GetImageAlphaBorder");
-    dukglue_register_function(ctx, &GetPixelDataSize, "GetPixelDataSize");
-    dukglue_register_function(ctx, &GetTextureData, "GetTextureData");
-    dukglue_register_function(ctx, &GetScreenData, "GetScreenData");
-    dukglue_register_function(ctx, &UpdateTexture, "UpdateTexture");
-    dukglue_register_function(ctx, &ImageCopy, "ImageCopy");
-    dukglue_register_function(ctx, &ImageFromImage, "ImageFromImage");
+    //dukglue_register_function(ctx, &UnloadRenderTexture, "UnloadRenderTexture");
+    //dukglue_register_function(ctx, &GetImageData, "GetImageData");
+    //dukglue_register_function(ctx, &GetImageDataNormalized, "GetImageDataNormalized");
+    //dukglue_register_function(ctx, &GetImageAlphaBorder, "GetImageAlphaBorder");
+    //dukglue_register_function(ctx, &GetPixelDataSize, "GetPixelDataSize");
+    //dukglue_register_function(ctx, &GetTextureData, "GetTextureData");
+    //dukglue_register_function(ctx, &GetScreenData, "GetScreenData");
+    //dukglue_register_function(ctx, &UpdateTexture, "UpdateTexture");
+    //dukglue_register_function(ctx, &ImageCopy, "ImageCopy");
+    //dukglue_register_function(ctx, &ImageFromImage, "ImageFromImage");
+    /*
     dukglue_register_function(ctx, &ImageToPOT, "ImageToPOT");
     dukglue_register_function(ctx, &ImageFormat, "ImageFormat");
     dukglue_register_function(ctx, &ImageAlphaMask, "ImageAlphaMask");
@@ -206,7 +207,7 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &ImageResizeCanvas, "ImageResizeCanvas");
     dukglue_register_function(ctx, &ImageMipmaps, "ImageMipmaps");
     dukglue_register_function(ctx, &ImageDither, "ImageDither");
-    dukglue_register_function(ctx, &*ImageExtractPalette, "ImageExtractPalette");
+    dukglue_register_function(ctx, &ImageExtractPalette, "ImageExtractPalette");
     dukglue_register_function(ctx, &ImageText, "ImageText");
     dukglue_register_function(ctx, &ImageTextEx, "ImageTextEx");
     dukglue_register_function(ctx, &ImageDraw, "ImageDraw");
@@ -224,6 +225,7 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &ImageColorContrast, "ImageColorContrast");
     dukglue_register_function(ctx, &ImageColorBrightness, "ImageColorBrightness");
     dukglue_register_function(ctx, &ImageColorReplace, "ImageColorReplace");
+    */
     dukglue_register_function(ctx, &GenImageColor, "GenImageColor");
     dukglue_register_function(ctx, &GenImageGradientV, "GenImageGradientV");
     dukglue_register_function(ctx, &GenImageGradientH, "GenImageGradientH");
@@ -232,43 +234,43 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &GenImageWhiteNoise, "GenImageWhiteNoise");
     dukglue_register_function(ctx, &GenImagePerlinNoise, "GenImagePerlinNoise");
     dukglue_register_function(ctx, &GenImageCellular, "GenImageCellular");
-    dukglue_register_function(ctx, &GenTextureMipmaps, "GenTextureMipmaps");
+    //dukglue_register_function(ctx, &GenTextureMipmaps, "GenTextureMipmaps");
     dukglue_register_function(ctx, &SetTextureFilter, "SetTextureFilter");
     dukglue_register_function(ctx, &SetTextureWrap, "SetTextureWrap");
     dukglue_register_function(ctx, &DrawTexture, "DrawTexture");
-    dukglue_register_function(ctx, &DrawTextureV, "DrawTextureV");
-    dukglue_register_function(ctx, &DrawTextureEx, "DrawTextureEx");
-    dukglue_register_function(ctx, &DrawTextureRec, "DrawTextureRec");
-    dukglue_register_function(ctx, &DrawTextureQuad, "DrawTextureQuad");
-    dukglue_register_function(ctx, &DrawTexturePro, "DrawTexturePro");
-    dukglue_register_function(ctx, &DrawTextureNPatch, "DrawTextureNPatch");
-    dukglue_register_function(ctx, &GetFontDefault, "GetFontDefault");
-    dukglue_register_function(ctx, &LoadFont, "LoadFont");
-    dukglue_register_function(ctx, &LoadFontEx, "LoadFontEx");
-    dukglue_register_function(ctx, &LoadFontFromImage, "LoadFontFromImage");
-    dukglue_register_function(ctx, &LoadFontData, "LoadFontData");
-    dukglue_register_function(ctx, &GenImageFontAtlas, "GenImageFontAtlas");
-    dukglue_register_function(ctx, &UnloadFont, "UnloadFont");
+    //dukglue_register_function(ctx, &DrawTextureV, "DrawTextureV");
+    //dukglue_register_function(ctx, &DrawTextureEx, "DrawTextureEx");
+    //dukglue_register_function(ctx, &DrawTextureRec, "DrawTextureRec");
+    //dukglue_register_function(ctx, &DrawTextureQuad, "DrawTextureQuad");
+    //dukglue_register_function(ctx, &DrawTexturePro, "DrawTexturePro");
+    //dukglue_register_function(ctx, &DrawTextureNPatch, "DrawTextureNPatch");
+    //dukglue_register_function(ctx, &GetFontDefault, "GetFontDefault");
+    //dukglue_register_function(ctx, &LoadFont, "LoadFont");
+    //dukglue_register_function(ctx, &LoadFontEx, "LoadFontEx");
+    //dukglue_register_function(ctx, &LoadFontFromImage, "LoadFontFromImage");
+    //dukglue_register_function(ctx, &LoadFontData, "LoadFontData");
+    //dukglue_register_function(ctx, &GenImageFontAtlas, "GenImageFontAtlas");
+    //dukglue_register_function(ctx, &UnloadFont, "UnloadFont");
     dukglue_register_function(ctx, &DrawFPS, "DrawFPS");
     dukglue_register_function(ctx, &DrawText, "DrawText");
-    dukglue_register_function(ctx, &DrawTextEx, "DrawTextEx");
-    dukglue_register_function(ctx, &DrawTextRec, "DrawTextRec");
-    dukglue_register_function(ctx, &DrawTextRecEx, "DrawTextRecEx");
+    //dukglue_register_function(ctx, &DrawTextEx, "DrawTextEx");
+    //dukglue_register_function(ctx, &DrawTextRec, "DrawTextRec");
+    //dukglue_register_function(ctx, &DrawTextRecEx, "DrawTextRecEx");
     dukglue_register_function(ctx, &MeasureText, "MeasureText");
-    dukglue_register_function(ctx, &MeasureTextEx, "MeasureTextEx");
-    dukglue_register_function(ctx, &GetGlyphIndex, "GetGlyphIndex");
-    dukglue_register_function(ctx, &GetNextCodepoint, "GetNextCodepoint");
+    //dukglue_register_function(ctx, &MeasureTextEx, "MeasureTextEx");
+    //dukglue_register_function(ctx, &GetGlyphIndex, "GetGlyphIndex");
+    //dukglue_register_function(ctx, &GetNextCodepoint, "GetNextCodepoint");
     dukglue_register_function(ctx, &TextIsEqual, "TextIsEqual");
     dukglue_register_function(ctx, &TextLength, "TextLength");
     dukglue_register_function(ctx, &TextCountCodepoints, "TextCountCodepoints");
     //dukglue_register_function(ctx, &TextFormat, "TextFormat");
     dukglue_register_function(ctx, &TextSubtext, "TextSubtext");
-    dukglue_register_function(ctx, &TextReplace, "TextReplace");
-    dukglue_register_function(ctx, &TextInsert, "TextInsert");
-    dukglue_register_function(ctx, &TextJoin, "TextJoin");
-    dukglue_register_function(ctx, &TextSplit, "TextSplit");
-    dukglue_register_function(ctx, &TextAppend, "TextAppend");
-    dukglue_register_function(ctx, &TextFindIndex, "TextFindIndex");
+    //dukglue_register_function(ctx, &TextReplace, "TextReplace");
+    //dukglue_register_function(ctx, &TextInsert, "TextInsert");
+    //dukglue_register_function(ctx, &TextJoin, "TextJoin");
+    //dukglue_register_function(ctx, &TextSplit, "TextSplit");
+    //dukglue_register_function(ctx, &TextAppend, "TextAppend");
+    //dukglue_register_function(ctx, &TextFindIndex, "TextFindIndex");
     dukglue_register_function(ctx, &TextToUpper, "TextToUpper");
     dukglue_register_function(ctx, &TextToLower, "TextToLower");
     dukglue_register_function(ctx, &TextToPascal, "TextToPascal");
@@ -281,14 +283,15 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawCubeWiresV, "DrawCubeWiresV");
     dukglue_register_function(ctx, &DrawCubeTexture, "DrawCubeTexture");
     dukglue_register_function(ctx, &DrawSphere, "DrawSphere");
-    dukglue_register_function(ctx, &DrawSphereEx, "DrawSphereEx");
+    //dukglue_register_function(ctx, &DrawSphereEx, "DrawSphereEx");
     dukglue_register_function(ctx, &DrawSphereWires, "DrawSphereWires");
     dukglue_register_function(ctx, &DrawCylinder, "DrawCylinder");
     dukglue_register_function(ctx, &DrawCylinderWires, "DrawCylinderWires");
     dukglue_register_function(ctx, &DrawPlane, "DrawPlane");
-    dukglue_register_function(ctx, &DrawRay, "DrawRay");
+    //dukglue_register_function(ctx, &DrawRay, "DrawRay");
     dukglue_register_function(ctx, &DrawGrid, "DrawGrid");
     dukglue_register_function(ctx, &DrawGizmo, "DrawGizmo");
+    /*
     dukglue_register_function(ctx, &LoadModel, "LoadModel");
     dukglue_register_function(ctx, &LoadModelFromMesh, "LoadModelFromMesh");
     dukglue_register_function(ctx, &UnloadModel, "UnloadModel");
@@ -317,6 +320,9 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &MeshBoundingBox, "MeshBoundingBox");
     dukglue_register_function(ctx, &MeshTangents, "MeshTangents");
     dukglue_register_function(ctx, &MeshBinormals, "MeshBinormals");
+    */
+
+    /*
     dukglue_register_function(ctx, &DrawModel, "DrawModel");
     dukglue_register_function(ctx, &DrawModelEx, "DrawModelEx");
     dukglue_register_function(ctx, &DrawModelWires, "DrawModelWires");
@@ -333,7 +339,9 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &GetCollisionRayModel, "GetCollisionRayModel");
     dukglue_register_function(ctx, &GetCollisionRayTriangle, "GetCollisionRayTriangle");
     dukglue_register_function(ctx, &GetCollisionRayGround, "GetCollisionRayGround");
-    dukglue_register_function(ctx, &LoadText, "LoadText");
+    */
+    //dukglue_register_function(ctx, &LoadText, "LoadText");
+    /*
     dukglue_register_function(ctx, &LoadShader, "LoadShader");
     dukglue_register_function(ctx, &LoadShaderCode, "LoadShaderCode");
     dukglue_register_function(ctx, &UnloadShader, "UnloadShader");
@@ -365,6 +373,7 @@ void raylib_js_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &ToggleVrMode, "ToggleVrMode");
     dukglue_register_function(ctx, &BeginVrDrawing, "BeginVrDrawing");
     dukglue_register_function(ctx, &EndVrDrawing, "EndVrDrawing");
+    */
     dukglue_register_function(ctx, &InitAudioDevice, "InitAudioDevice");
     dukglue_register_function(ctx, &CloseAudioDevice, "CloseAudioDevice");
 

@@ -12,7 +12,6 @@
 //--------------------------------------------------------------------------------------
 const screenWidth = 800
 const screenHeight = 450
-
 InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window")
 
 SetTargetFPS(60)

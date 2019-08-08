@@ -7,6 +7,12 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 #set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #set(CMAKE_CXX_EXTENSIONS OFF)
 
+
+add_definitions(
+    -Wfatal-errors
+    )
+
+
 add_subdirectory(include)
 add_subdirectory(examples)
 add_subdirectory(bin)

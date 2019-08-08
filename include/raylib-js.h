@@ -299,7 +299,7 @@ void raylib_js_context(duk_context* ctx) {
 
     dukglue_register_function(ctx, &raylib_js_print, "print");
 
-    raylib_js_register_functions();
+    raylib_js_register_functions(ctx);
 }
 
 #endif
