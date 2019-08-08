@@ -1,1 +1,10 @@
 /build
+CMakeFiles
+Makefile
+config.h
+cmake_install.cmake
+*.a
+_deps
+CPack*
+CMakeCache.txt
+bin/raylib-js
