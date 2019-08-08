@@ -8,6 +8,7 @@
 #include <dukglue/detail_primitive_types.h>
 
 #include "raylib-js-structs.h"
+#include "raylib-js-functions.h"
 
 void raylib_js_print(std::string out) {
     std::cout << out << std::endl;
@@ -295,20 +296,10 @@ void raylib_js_defines(duk_context* ctx) {
 
 void raylib_js_context(duk_context* ctx) {
     raylib_js_defines(ctx);
-	dukglue_register_function(ctx, &IsWindowReady, "IsWindowReady");
-	dukglue_register_function(ctx, &InitWindow, "InitWindow");
-	dukglue_register_function(ctx, &SetTargetFPS, "SetTargetFPS");
-	dukglue_register_function(ctx, &WindowShouldClose, "WindowShouldClose");
-	dukglue_register_function(ctx, &BeginDrawing, "BeginDrawing");
-	dukglue_register_function(ctx, &ClearBackground, "ClearBackground");
-	dukglue_register_function(ctx, &DrawText, "DrawText");
-	dukglue_register_function(ctx, &EndDrawing, "EndDrawing");
-	dukglue_register_function(ctx, &CloseWindow, "CloseWindow");
-    dukglue_register_function(ctx, &GetMousePosition, "GetMousePosition");
-    dukglue_register_function(ctx, &IsMouseButtonPressed, "IsMouseButtonPressed");
-    dukglue_register_function(ctx, &DrawCircleV, "DrawCircleV");
 
     dukglue_register_function(ctx, &raylib_js_print, "print");
+
+    raylib_js_register_functions();
 }
 
 #endif
