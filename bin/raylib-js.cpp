@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     duk_context* ctx = duk_create_heap_default();
     raylib_js_context(ctx);
-	duk_eval_string(ctx, contents.c_str());
+	dukglue_peval<void>(ctx, contents.c_str());
 	duk_destroy_heap(ctx);
 
     return 0;

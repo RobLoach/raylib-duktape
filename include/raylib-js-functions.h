@@ -4,6 +4,7 @@
 #include <raylib.h>
 #include <duktape.h>
 #include <dukglue/dukglue.h>
+#include "raylib-js-structs.h"
 
 void raylib_js_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &InitWindow, "InitWindow");
@@ -40,7 +41,11 @@ void raylib_js_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &ClearBackground, "ClearBackground");
     dukglue_register_function(ctx, &BeginDrawing, "BeginDrawing");
     dukglue_register_function(ctx, &EndDrawing, "EndDrawing");
-    //dukglue_register_function(ctx, &BeginMode2D, "BeginMode2D");
+
+    //dukglue_register_constructor<dukglue::types::Camera2DClass, Vector2, Vector2, float, float>(ctx, "Camera");
+    //dukglue_set_base_class<Camera2D, dukglue::types::Camera2DClass>(ctx);
+
+    dukglue_register_function(ctx, &BeginMode2D, "BeginMode2D");
     dukglue_register_function(ctx, &EndMode2D, "EndMode2D");
     //dukglue_register_function(ctx, &BeginMode3D, "BeginMode3D");
     dukglue_register_function(ctx, &EndMode3D, "EndMode3D");

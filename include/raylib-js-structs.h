@@ -327,12 +327,63 @@ struct DukType<Texture2D> {
     }
 };
 
+template<>
+struct DukType<Camera2D> {
+    typedef std::true_type IsValueType;
+    template<typename FullT>
+    static Camera2D read(duk_context* ctx, duk_idx_t arg_idx) {
+        if (!duk_is_object(ctx, arg_idx)) {
+            duk_int_t type_idx = duk_get_type(ctx, arg_idx);
+            duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
+        }
+        Camera2D out;
+        duk_get_prop_string(ctx, arg_idx, "offset");
+        out.offset = DukType<Vector2>::read<Vector2>(ctx, arg_idx);
+        std::cout << "Vector2{x: " << out.offset.x << ", y: " << out.offset.y << "}" << std::endl;
+        duk_pop(ctx);
+
+        duk_get_prop_string(ctx, arg_idx, "target");
+        out.target = DukType<Vector2>::read<Vector2>(ctx, arg_idx);
+        duk_get_prop_string(ctx, arg_idx, "rotation");
+        out.rotation = duk_get_number(ctx, -1);
+        duk_get_prop_string(ctx, arg_idx, "zoom");
+        out.zoom = duk_get_number(ctx, -1);
+        return out;
+    }
+    template<typename FullT>
+    static void push(duk_context* ctx, Camera2D value) {
+        duk_idx_t obj_idx = duk_push_object(ctx);
+
+        DukType<Vector2>::push<Vector2>(ctx, value.offset);
+        duk_put_prop_string(ctx, obj_idx, "offset");
+
+        DukType<Vector2>::push<Vector2>(ctx, value.target);
+        duk_put_prop_string(ctx, obj_idx, "target");
+
+        duk_push_number(ctx, value.rotation);
+        duk_put_prop_string(ctx, obj_idx, "rotation");
+        duk_push_number(ctx, value.zoom);
+        duk_put_prop_string(ctx, obj_idx, "zoom");
+    }
+};
+
+/*
+class Camera2DClass : public Camera2D {
+public:
+    Camera2DClass(Vector2 inoffset, Vector2 intarget, float inrotation, float inzoom) {
+        offset = inoffset;
+        target = intarget;
+        rotation = inrotation;
+        zoom = inzoom;
+    }
+};
+*/
+
 // TODO: Add RenderTexture2D
 // TODO: Add NPatchInfo
 // TODO: Add CharInfo
 // TODO: Add Font
 // TODO: Add Camera3D
-// TODO: Add Camera2D
 // TODO: Add Mesh
 // TODO: Add Shader
 // TODO: Add MaterialMap
