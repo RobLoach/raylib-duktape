@@ -336,11 +336,21 @@ struct DukType<Camera2D> {
             duk_int_t type_idx = duk_get_type(ctx, arg_idx);
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
+
         Camera2D out;
         duk_get_prop_string(ctx, arg_idx, "offset");
-        out.offset = DukType<Vector2>::read<Vector2>(ctx, arg_idx);
-        std::cout << "Vector2{x: " << out.offset.x << ", y: " << out.offset.y << "}" << std::endl;
+
+
+
+        duk_get_prop_string(ctx, -1, "x");
+        out.offset.x = duk_get_number(ctx, -1);
+        duk_get_prop_string(ctx, -1, "y");
+        out.offset.y = duk_get_number(ctx, -1);
         duk_pop(ctx);
+
+        //out.offset = DukType<Vector2>::read<Vector2>(ctx, arg_idx-1);
+        std::cout << "Vector2{x: " << out.offset.x << ", y: " << out.offset.y << "}" << std::endl;
+        //duk_pop(ctx);
 
         duk_get_prop_string(ctx, arg_idx, "target");
         out.target = DukType<Vector2>::read<Vector2>(ctx, arg_idx);
@@ -353,9 +363,11 @@ struct DukType<Camera2D> {
     template<typename FullT>
     static void push(duk_context* ctx, Camera2D value) {
         duk_idx_t obj_idx = duk_push_object(ctx);
+        std::cout << "push" << std::endl;
 
         DukType<Vector2>::push<Vector2>(ctx, value.offset);
         duk_put_prop_string(ctx, obj_idx, "offset");
+        duk_pop(ctx);
 
         DukType<Vector2>::push<Vector2>(ctx, value.target);
         duk_put_prop_string(ctx, obj_idx, "target");

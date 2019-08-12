@@ -68,6 +68,16 @@ while (!WindowShouldClose())        // Detect window close button or ESC key
       player.x -= 2;              // Player movement
       camera.offset.x += 2;       // Camera displacement with player movement
   }
+  if (IsKeyDown(KEY_UP))
+  {
+      //player.x += 2;              // Player movement
+      camera.offset.y -= 2;       // Camera displacement with player movement
+  }
+  else if (IsKeyDown(KEY_DOWN))
+  {
+      //player.x -= 2;              // Player movement
+      camera.offset.y += 2;       // Camera displacement with player movement
+  }
 
   // Camera target follows player
   camera.target = {x:player.x + 20, y:player.y + 20}
