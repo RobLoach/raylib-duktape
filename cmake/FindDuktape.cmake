@@ -19,6 +19,6 @@ if (NOT duktape_FOUND)
       )
     endif()
 
-    target_include_directories(duktape PUBLIC ${duktape_SOURCE_DIR}/src)
+    target_include_directories(duktape PUBLIC ${duktape_SOURCE_DIR}/src ${duktape_SOURCE_DIR}/extras)
   endif()
 endif()

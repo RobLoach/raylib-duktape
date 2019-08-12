@@ -11,15 +11,8 @@
 #include "raylib-js-globals.h"
 #include "raylib-js-functions.h"
 
-void raylib_js_print(std::string out) {
-    std::cout << out << std::endl;
-}
-
-void raylib_js_context(duk_context* ctx) {
+void duk_module_raylib_init(duk_context* ctx) {
     raylib_js_globals(ctx);
-
-    dukglue_register_function(ctx, &raylib_js_print, "print");
-
     raylib_js_register_functions(ctx);
 }
 

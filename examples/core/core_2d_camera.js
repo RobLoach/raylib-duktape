@@ -108,7 +108,8 @@ while (!WindowShouldClose())        // Detect window close button or ESC key
 
     ClearBackground(RAYWHITE);
 
-    print("JS: " + camera.offset.x.toString())
+    // TODO: Fix camera no worky.
+    console.log("JS: " + camera.offset.x.toString())
     BeginMode2D(camera);
 
       DrawRectangle(-6000, 320, 13000, 8000, DARKGRAY);

@@ -10,7 +10,7 @@ TEST_CASE("raylib-js", "[raylib-js]") {
     duk_context* ctx = duk_create_heap_default();
 
     // Register the raylib.js context.
-    raylib_js_context(ctx);
+    duk_module_raylib_init(ctx);
 
     SECTION("IsWindowReady()") {
         bool output = dukglue_peval<bool>(ctx, "IsWindowReady()");
@@ -21,6 +21,11 @@ TEST_CASE("raylib-js", "[raylib-js]") {
         int output = dukglue_peval<int>(ctx, "GetRandomValue(10,20)");
         REQUIRE(output >= 10);
         REQUIRE(output <= 20);
+    }
+
+    SECTION("Color") {
+        int r = dukglue_peval<int>(ctx, "RAYWHITE.r");
+        REQUIRE(r == RAYWHITE.r);
     }
 
     duk_destroy_heap(ctx);
