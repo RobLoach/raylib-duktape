@@ -29,7 +29,7 @@ macro(ADD_CATCH_TESTS executable)
 endmacro()
 
 
-find_package(DuktapeCC)
+find_package(Duktapecc)
 find_package(Raylib)
 
 list(APPEND LIBS raylib duktapecc raylib-js-h)

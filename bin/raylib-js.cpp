@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     duktape::engine js;
 
     // Initialize the raylib module.
-    //duk_module_raylib_init(ctx);
+    raylibjs::define_in(js);
 
     // Eval the loaded code.
     try {

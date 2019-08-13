@@ -2,15 +2,16 @@
 #define RAYLIB_JS_FUNCTIONS_H__
 
 #include <raylib.h>
-#include <duktape.h>
-#include <dukglue/dukglue.h>
+#include <duktape/duktape.hh>
 #include "raylib-js-structs.h"
 
-void raylib_js_register_functions(duk_context* ctx) {
-    dukglue_register_function(ctx, &InitWindow, "InitWindow");
-    dukglue_register_function(ctx, &WindowShouldClose, "WindowShouldClose");
-    dukglue_register_function(ctx, &CloseWindow, "CloseWindow");
-    dukglue_register_function(ctx, &IsWindowReady, "IsWindowReady");
+namespace raylibjs {
+template <typename=void>
+    static void define_functions(duktape::engine& js) {
+    js.define("InitWindow", InitWindow);
+    js.define("WindowShouldClose", WindowShouldClose);
+    js.define("CloseWindow", CloseWindow);
+    js.define("IsWindowReady", IsWindowReady);
     // dukglue_register_function(ctx, &IsWindowMinimized, "IsWindowMinimized");
     // dukglue_register_function(ctx, &IsWindowResized, "IsWindowResized");
     // dukglue_register_function(ctx, &IsWindowHidden, "IsWindowHidden");
@@ -435,5 +436,5 @@ void raylib_js_register_functions(duk_context* ctx) {
     // */
 
 }
-
+}
 #endif

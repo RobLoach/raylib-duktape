@@ -4,7 +4,9 @@
 #include <raylib.h>
 #include <dukglue/dukglue.h>
 
-void raylib_js_globals(duktape::engine& js) {
+namespace raylibjs {
+template <typename=void>
+static void define_globals(duktape::engine& js) {
     js.define("LIGHTGRAY", LIGHTGRAY);
     js.define("GRAY", GRAY);
     js.define("DARKGRAY", DARKGRAY);
@@ -248,6 +250,7 @@ void raylib_js_globals(duktape::engine& js) {
     js.define("NPT_3PATCH_VERTICAL", (int)NPT_3PATCH_VERTICAL);
     js.define("NPT_3PATCH_HORIZONTAL", (int)NPT_3PATCH_HORIZONTAL);
 
+}
 }
 
 #endif
