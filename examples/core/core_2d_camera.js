@@ -68,16 +68,6 @@ while (!WindowShouldClose())        // Detect window close button or ESC key
       player.x -= 2;              // Player movement
       camera.offset.x += 2;       // Camera displacement with player movement
   }
-  if (IsKeyDown(KEY_UP))
-  {
-      //player.x += 2;              // Player movement
-      camera.offset.y -= 2;       // Camera displacement with player movement
-  }
-  else if (IsKeyDown(KEY_DOWN))
-  {
-      //player.x -= 2;              // Player movement
-      camera.offset.y += 2;       // Camera displacement with player movement
-  }
 
   // Camera target follows player
   camera.target = {x:player.x + 20, y:player.y + 20}
@@ -118,8 +108,6 @@ while (!WindowShouldClose())        // Detect window close button or ESC key
 
     ClearBackground(RAYWHITE);
 
-    // TODO: Fix camera no worky.
-    console.log("JS: " + camera.offset.x.toString())
     BeginMode2D(camera);
 
       DrawRectangle(-6000, 320, 13000, 8000, DARKGRAY);

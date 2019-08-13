@@ -338,24 +338,28 @@ struct DukType<Camera2D> {
         }
 
         Camera2D out;
+
+        // Offset
         duk_get_prop_string(ctx, arg_idx, "offset");
-
-
-
         duk_get_prop_string(ctx, -1, "x");
         out.offset.x = duk_get_number(ctx, -1);
-        duk_get_prop_string(ctx, -1, "y");
+        duk_get_prop_string(ctx, -2, "y");
         out.offset.y = duk_get_number(ctx, -1);
         duk_pop(ctx);
 
-        //out.offset = DukType<Vector2>::read<Vector2>(ctx, arg_idx-1);
-        std::cout << "Vector2{x: " << out.offset.x << ", y: " << out.offset.y << "}" << std::endl;
-        //duk_pop(ctx);
-
+        // Target
         duk_get_prop_string(ctx, arg_idx, "target");
-        out.target = DukType<Vector2>::read<Vector2>(ctx, arg_idx);
+        duk_get_prop_string(ctx, -1, "x");
+        out.target.x = duk_get_number(ctx, -1);
+        duk_get_prop_string(ctx, -2, "y");
+        out.target.y = duk_get_number(ctx, -1);
+        duk_pop(ctx);
+
+        // Rotation
         duk_get_prop_string(ctx, arg_idx, "rotation");
         out.rotation = duk_get_number(ctx, -1);
+
+        // Zoom
         duk_get_prop_string(ctx, arg_idx, "zoom");
         out.zoom = duk_get_number(ctx, -1);
         return out;
@@ -363,14 +367,15 @@ struct DukType<Camera2D> {
     template<typename FullT>
     static void push(duk_context* ctx, Camera2D value) {
         duk_idx_t obj_idx = duk_push_object(ctx);
-        std::cout << "push" << std::endl;
 
+        // TODO: Fix push Camera.
         DukType<Vector2>::push<Vector2>(ctx, value.offset);
         duk_put_prop_string(ctx, obj_idx, "offset");
         duk_pop(ctx);
 
         DukType<Vector2>::push<Vector2>(ctx, value.target);
         duk_put_prop_string(ctx, obj_idx, "target");
+        duk_pop(ctx);
 
         duk_push_number(ctx, value.rotation);
         duk_put_prop_string(ctx, obj_idx, "rotation");
@@ -379,22 +384,10 @@ struct DukType<Camera2D> {
     }
 };
 
-/*
-class Camera2DClass : public Camera2D {
-public:
-    Camera2DClass(Vector2 inoffset, Vector2 intarget, float inrotation, float inzoom) {
-        offset = inoffset;
-        target = intarget;
-        rotation = inrotation;
-        zoom = inzoom;
-    }
-};
-*/
-
+// TODO: Add Font
 // TODO: Add RenderTexture2D
 // TODO: Add NPatchInfo
 // TODO: Add CharInfo
-// TODO: Add Font
 // TODO: Add Camera3D
 // TODO: Add Mesh
 // TODO: Add Shader
