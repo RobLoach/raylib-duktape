@@ -2,8 +2,7 @@
 #include <string>
 
 #include "raylib.h"
-#include <duktape.h>
-#include <console/duk_console.h>
+#include <duktape.hh>
 #include "raylib-js.h"
 
 int main(int argc, char *argv[])
@@ -44,19 +43,18 @@ int main(int argc, char *argv[])
     }
 
     // Construct the Duktape environment.
-    duk_context* ctx = duk_create_heap_default();
-
-    // Initialize the console module.
-    duk_console_init(ctx, 0);
+    duktape::engine js;
 
     // Initialize the raylib module.
-    duk_module_raylib_init(ctx);
+    //duk_module_raylib_init(ctx);
 
     // Eval the loaded code.
-	dukglue_peval<void>(ctx, contents.c_str());
-
-    // Destroy the environment.
-	duk_destroy_heap(ctx);
+    try {
+	   js.eval<void>(contents);
+    }
+    catch (const duktape::script_error& e) {
+        cout << "Caught '" << e.what() << "'" << endl;
+    }
 
     return 0;
 }

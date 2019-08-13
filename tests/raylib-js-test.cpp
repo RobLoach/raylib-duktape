@@ -1,8 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "raylib.h"
-#include <duktape.h>
-#include <dukglue/dukglue.h>
+#include <duktape.hh>
 #include "raylib-js.h"
 
 TEST_CASE("raylib-js", "[raylib-js]") {

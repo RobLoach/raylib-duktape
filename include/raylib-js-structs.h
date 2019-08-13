@@ -2,13 +2,75 @@
 #define RAYLIB_JS_STRUCTS_H__
 
 #include <raylib.h>
-#include <duktape.h>
-#include <dukglue/dukglue.h>
-#include <dukglue/detail_primitive_types.h>
+#include <duktape/duktape.hh>
 
-namespace dukglue {
-namespace types {
+namespace raylibjs {
 
+template <> struct conv<Vector2>
+{
+using type = Vector2;
+
+static constexpr const char* cc_name() noexcept
+{ return "Vector2"; }
+
+static constexpr const char* ecma_name() noexcept
+{ return "Vector2"; }
+
+static constexpr int nret() noexcept
+{ return 1; }
+
+static bool is(duk_context* ctx, int index)
+{
+    auto js = api(ctx);
+    return js.is_object(index) && js.has_prop_string(index, "x") && js.has_prop_string(index, "y");
+}
+
+static type get(duk_context* ctx, int index)
+{
+    type out;
+    auto js = api(ctx);
+    js.get_prop_string(index, "x");
+    out.x = js.get_number(-1);
+    js.get_prop_string(index, "y");
+    out.y = js.get_number(-1);
+    return out;
+}
+
+static type req(duk_context* ctx, int index)
+{
+    auto js = api(ctx);
+    return js.is_object(index) && js.has_prop_string(index, "x") && js.has_prop_string(index, "y"); }
+
+static type to(duk_context* ctx, int index)
+{ return api(ctx).to_boolean(index); }
+
+static void push(duk_context* ctx, const type& val)
+{
+
+    auto js = api(ctx);
+
+        js.push_object();
+        js.push_number(ctx, value.x);
+        js.put_prop_string(ctx, obj_idx, "x");
+        js.push_number(ctx, value.y);
+        js.put_prop_string(ctx, obj_idx, "y");
+}
+
+static void push(duk_context* ctx, type&& val)
+{
+    auto js = api(ctx);
+
+        js.push_object();
+        js.push_number(ctx, value.x);
+        js.put_prop_string(ctx, obj_idx, "x");
+        js.push_number(ctx, value.y);
+        js.put_prop_string(ctx, obj_idx, "y");
+
+         }
+};
+
+
+/*
 template<>
 struct DukType<::Vector2> {
     typedef std::true_type IsValueType;
@@ -383,6 +445,7 @@ struct DukType<Camera2D> {
         duk_put_prop_string(ctx, obj_idx, "zoom");
     }
 };
+*/
 
 // TODO: Add Font
 // TODO: Add RenderTexture2D
