@@ -12,3 +12,5 @@ install(FILES
 )
 
 target_include_directories(raylib-js-h INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_dependencies(raylib-js-h duktapecc)

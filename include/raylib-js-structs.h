@@ -2,13 +2,119 @@
 #define RAYLIB_JS_STRUCTS_H__
 
 #include <raylib.h>
-#include <duktape.h>
-#include <dukglue/dukglue.h>
-#include <dukglue/detail_primitive_types.h>
+#include <duktape/duktape.hh>
 
-namespace dukglue {
-namespace types {
+namespace raylibjs {
 
+static void define_structs_vector2(duktape::engine& js) {
+    js.define(
+        duktape::native_object<Vector2>("Vector2")
+        .method("toString", [](duktape::api& stack, Vector2& instance) {
+            stack.push(std::string("Vector2{x:")
+                + std::to_string(instance.x)
+                + std::string(",y:")
+                + std::to_string(instance.y)
+                + std::string("}"));
+            return 1;
+        })
+        /*.constructor([](duktape::api& stack) {
+            if(stack.top()==0) {
+                Vector2 v;
+                return v;
+            } else if(stack.top()==2) {
+                Vector2 v;
+                v.x = stack.get<float>(0);
+                v.y = stack.get<float>(1);
+                return v;
+            } else {
+                throw duktape::script_error("Vector2 constructor needs either none or two arguments (x,y)");
+            }
+        })
+        .getter("x", [](duktape::api& stack, Vector2& instance){
+            stack.push(instance.x);
+        })
+        .getter("y", [](duktape::api& stack, Vector2& instance){
+            stack.push(instance.y);
+        })
+        .setter("x", [](duktape::api& stack, Vector2& instance){
+            instance.x = stack.get<float>(-1);
+        })
+        .setter("y", [](duktape::api& stack, Vector2& instance){
+            instance.y = stack.get<float>(-1);
+        })*/
+    );
+};
+
+
+template <typename=void>
+static void define_structs(duktape::engine& js) {
+    define_structs_vector2(js);
+};
+
+}
+
+/*
+template <> struct conv<Vector2>
+{
+    using type = Vector2;
+
+    static constexpr const char* cc_name() noexcept
+    {
+        return "Vector2";
+    }
+
+    static constexpr const char* ecma_name() noexcept
+    {
+        return "Vector2";
+    }
+
+    static constexpr int nret() noexcept
+    {
+        return 1;
+    }
+
+    static bool is(duk_context* ctx, int index)
+    {
+        auto js = duktape::api(ctx);
+        return js.is_object(index) && js.has_prop_string(index, "x") && js.has_prop_string(index, "y");
+    }
+
+    static type get(duk_context* ctx, int index)
+    {
+        type out;
+        auto js = duktape::api(ctx);
+        js.get_prop_string(index, "x");
+        out.x = js.get_number(-1);
+        js.get_prop_string(index, "y");
+        out.y = js.get_number(-1);
+        return out;
+    }
+
+    static type req(duk_context* ctx, int index)
+    {
+        return get(ctx, index);
+    }
+
+    static type to(duk_context* ctx, int index)
+    {
+        return get(ctx, index);
+    }
+
+    static void push(duk_context* ctx, type val)
+    {
+        auto js = duktape::api(ctx);
+
+        js.push_object();
+        js.push_number(ctx, value.x);
+        js.put_prop_string(ctx, "x");
+        js.push_number(ctx, value.y);
+        js.put_prop_string(ctx, "y");
+
+    }
+};
+*/
+
+/*
 template<>
 struct DukType<::Vector2> {
     typedef std::true_type IsValueType;
@@ -383,6 +489,7 @@ struct DukType<Camera2D> {
         duk_put_prop_string(ctx, obj_idx, "zoom");
     }
 };
+*/
 
 // TODO: Add Font
 // TODO: Add RenderTexture2D
@@ -406,8 +513,5 @@ struct DukType<Camera2D> {
 // TODO: Add Sound
 // TODO: Add Music
 // TODO: Add VrDeviceInfo
-
-}
-}
 
 #endif

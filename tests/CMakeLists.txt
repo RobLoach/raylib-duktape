@@ -29,11 +29,10 @@ macro(ADD_CATCH_TESTS executable)
 endmacro()
 
 
-find_package(Duktape)
-find_package(Dukglue)
+find_package(Duktapecc)
 find_package(Raylib)
 
-list(APPEND LIBS raylib duktape dukglue raylib-js-h)
+list(APPEND LIBS raylib duktapecc raylib-js-h)
 list(APPEND SOURCES raylib-js-test.cpp)
 add_executable(raylib-js-test ${SOURCES})
 

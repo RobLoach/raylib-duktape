@@ -3,17 +3,19 @@
 
 #include <iostream>
 
-#include <duktape.h>
-#include <dukglue/dukglue.h>
-#include <dukglue/detail_primitive_types.h>
+#include <duktape/duktape.hh>
 
 #include "raylib-js-structs.h"
 #include "raylib-js-globals.h"
 #include "raylib-js-functions.h"
 
-void duk_module_raylib_init(duk_context* ctx) {
-    raylib_js_globals(ctx);
-    raylib_js_register_functions(ctx);
+namespace raylibjs {
+	template <typename=void>
+	static void define_in(duktape::engine& js) {
+		define_globals(js);
+		define_functions(js);
+		define_structs(js);
+	}
 }
 
 #endif
