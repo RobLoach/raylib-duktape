@@ -11,6 +11,10 @@ TEST_CASE("raylib-js", "[raylib-js]") {
     // Register the raylib.js context.
     raylibjs::define_in(js);
 
+    SECTION("Vector2") {
+        float x = js.eval<float>("var v = Vector2(200, 100); return v.x;")
+        REQUIRE(x == 200);
+    }
 
     SECTION("Color") {
         int r = js.eval<int>("RAYWHITE.r");

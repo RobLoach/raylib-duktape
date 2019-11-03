@@ -14,6 +14,7 @@ namespace raylibjs {
 	static void define_in(duktape::engine& js) {
 		define_globals(js);
 		define_functions(js);
+		define_structs(js);
 	}
 }
 

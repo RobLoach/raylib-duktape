@@ -2,11 +2,12 @@
 #define RAYLIB_JS_GLOBALS_H__
 
 #include <raylib.h>
-#include <dukglue/dukglue.h>
+#include <duktape/duktape.hh>
 
 namespace raylibjs {
 template <typename=void>
 static void define_globals(duktape::engine& js) {
+    /*
     js.define("LIGHTGRAY", LIGHTGRAY);
     js.define("GRAY", GRAY);
     js.define("DARKGRAY", DARKGRAY);
@@ -33,16 +34,17 @@ static void define_globals(duktape::engine& js) {
     js.define("BLANK", BLANK);
     js.define("MAGENTA", MAGENTA);
     js.define("RAYWHITE", RAYWHITE);
+    */
     js.define("PI", (float)PI);
     js.define("MAX_TOUCH_POINTS", (int)MAX_TOUCH_POINTS);
-    js.define("FLAG_SHOW_LOGO", (int)FLAG_SHOW_LOGO);
+    //js.define("FLAG_SHOW_LOGO", (int)FLAG_SHOW_LOGO);
     js.define("FLAG_FULLSCREEN_MODE", (int)FLAG_FULLSCREEN_MODE);
     js.define("FLAG_WINDOW_RESIZABLE", (int)FLAG_WINDOW_RESIZABLE);
     js.define("FLAG_WINDOW_UNDECORATED", (int)FLAG_WINDOW_UNDECORATED);
     js.define("FLAG_WINDOW_TRANSPARENT", (int)FLAG_WINDOW_TRANSPARENT);
     js.define("FLAG_MSAA_4X_HINT", (int)FLAG_MSAA_4X_HINT);
     js.define("FLAG_VSYNC_HINT", (int)FLAG_VSYNC_HINT);
-    js.define("LOG_ALL", (int)LOG_ALL);
+    //js.define("LOG_ALL", (int)LOG_ALL);
     js.define("LOG_TRACE", (int)LOG_TRACE);
     js.define("LOG_DEBUG", (int)LOG_DEBUG);
     js.define("LOG_INFO", (int)LOG_INFO);
@@ -159,14 +161,14 @@ static void define_globals(duktape::engine& js) {
     js.define("KEY_MENU", (int)KEY_MENU);
     js.define("KEY_VOLUME_UP", (int)KEY_VOLUME_UP);
     js.define("KEY_VOLUME_DOWN", (int)KEY_VOLUME_DOWN);
-    js.define("MOUSE_LEFT_BUTTON", (int)MOUSE_LEFT_BUTTON);
+    //js.define("MOUSE_LEFT_BUTTON", (int)MOUSE_LEFT_BUTTON);
     js.define("MOUSE_RIGHT_BUTTON", (int)MOUSE_RIGHT_BUTTON);
     js.define("MOUSE_MIDDLE_BUTTON", (int)MOUSE_MIDDLE_BUTTON);
-    js.define("GAMEPAD_PLAYER1", (int)GAMEPAD_PLAYER1);
+    //js.define("GAMEPAD_PLAYER1", (int)GAMEPAD_PLAYER1);
     js.define("GAMEPAD_PLAYER2", (int)GAMEPAD_PLAYER2);
     js.define("GAMEPAD_PLAYER3", (int)GAMEPAD_PLAYER3);
     js.define("GAMEPAD_PLAYER4", (int)GAMEPAD_PLAYER4);
-    js.define("GAMEPAD_BUTTON_UNKNOWN", (int)GAMEPAD_BUTTON_UNKNOWN);
+    //js.define("GAMEPAD_BUTTON_UNKNOWN", (int)GAMEPAD_BUTTON_UNKNOWN);
     js.define("GAMEPAD_BUTTON_LEFT_FACE_UP", (int)GAMEPAD_BUTTON_LEFT_FACE_UP);
     js.define("GAMEPAD_BUTTON_LEFT_FACE_RIGHT", (int)GAMEPAD_BUTTON_LEFT_FACE_RIGHT);
     js.define("GAMEPAD_BUTTON_LEFT_FACE_DOWN", (int)GAMEPAD_BUTTON_LEFT_FACE_DOWN);
@@ -184,14 +186,14 @@ static void define_globals(duktape::engine& js) {
     js.define("GAMEPAD_BUTTON_MIDDLE_RIGHT", (int)GAMEPAD_BUTTON_MIDDLE_RIGHT);
     js.define("GAMEPAD_BUTTON_LEFT_THUMB", (int)GAMEPAD_BUTTON_LEFT_THUMB);
     js.define("GAMEPAD_BUTTON_RIGHT_THUMB", (int)GAMEPAD_BUTTON_RIGHT_THUMB);
-    js.define("GAMEPAD_AXIS_UNKNOWN", (int)GAMEPAD_AXIS_UNKNOWN);
+    //js.define("GAMEPAD_AXIS_UNKNOWN", (int)GAMEPAD_AXIS_UNKNOWN);
     js.define("GAMEPAD_AXIS_LEFT_X", (int)GAMEPAD_AXIS_LEFT_X);
     js.define("GAMEPAD_AXIS_LEFT_Y", (int)GAMEPAD_AXIS_LEFT_Y);
     js.define("GAMEPAD_AXIS_RIGHT_X", (int)GAMEPAD_AXIS_RIGHT_X);
     js.define("GAMEPAD_AXIS_RIGHT_Y", (int)GAMEPAD_AXIS_RIGHT_Y);
     js.define("GAMEPAD_AXIS_LEFT_TRIGGER", (int)GAMEPAD_AXIS_LEFT_TRIGGER);
     js.define("GAMEPAD_AXIS_RIGHT_TRIGGER", (int)GAMEPAD_AXIS_RIGHT_TRIGGER);
-    js.define("LOC_VERTEX_POSITION", (int)LOC_VERTEX_POSITION);
+    //js.define("LOC_VERTEX_POSITION", (int)LOC_VERTEX_POSITION);
     js.define("LOC_VERTEX_TEXCOORD01", (int)LOC_VERTEX_TEXCOORD01);
     js.define("LOC_VERTEX_TEXCOORD02", (int)LOC_VERTEX_TEXCOORD02);
     js.define("LOC_VERTEX_NORMAL", (int)LOC_VERTEX_NORMAL);
@@ -218,7 +220,7 @@ static void define_globals(duktape::engine& js) {
     js.define("LOC_MAP_BRDF", (int)LOC_MAP_BRDF);
     js.define("LOC_MAP_DIFFUSE", (int)LOC_MAP_DIFFUSE);
     js.define("LOC_MAP_SPECULAR", (int)LOC_MAP_SPECULAR);
-    js.define("WRAP_REPEAT", (int)WRAP_REPEAT);
+    /*js.define("WRAP_REPEAT", (int)WRAP_REPEAT);
     js.define("WRAP_CLAMP", (int)WRAP_CLAMP);
     js.define("WRAP_MIRROR_REPEAT", (int)WRAP_MIRROR_REPEAT);
     js.define("WRAP_MIRROR_CLAMP", (int)WRAP_MIRROR_CLAMP);
@@ -249,6 +251,7 @@ static void define_globals(duktape::engine& js) {
     js.define("NPT_9PATCH", (int)NPT_9PATCH);
     js.define("NPT_3PATCH_VERTICAL", (int)NPT_3PATCH_VERTICAL);
     js.define("NPT_3PATCH_HORIZONTAL", (int)NPT_3PATCH_HORIZONTAL);
+    */
 
 }
 }

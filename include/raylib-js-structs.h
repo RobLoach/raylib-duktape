@@ -6,6 +6,54 @@
 
 namespace raylibjs {
 
+static void define_structs_vector2(duktape::engine& js) {
+    js.define(
+        duktape::native_object<Vector2>("Vector2")
+        .method("toString", [](duktape::api& stack, Vector2& instance) {
+            stack.push(std::string("Vector2{x:")
+                + std::to_string(instance.x)
+                + std::string(",y:")
+                + std::to_string(instance.y)
+                + std::string("}"));
+            return 1;
+        })
+        /*.constructor([](duktape::api& stack) {
+            if(stack.top()==0) {
+                Vector2 v;
+                return v;
+            } else if(stack.top()==2) {
+                Vector2 v;
+                v.x = stack.get<float>(0);
+                v.y = stack.get<float>(1);
+                return v;
+            } else {
+                throw duktape::script_error("Vector2 constructor needs either none or two arguments (x,y)");
+            }
+        })
+        .getter("x", [](duktape::api& stack, Vector2& instance){
+            stack.push(instance.x);
+        })
+        .getter("y", [](duktape::api& stack, Vector2& instance){
+            stack.push(instance.y);
+        })
+        .setter("x", [](duktape::api& stack, Vector2& instance){
+            instance.x = stack.get<float>(-1);
+        })
+        .setter("y", [](duktape::api& stack, Vector2& instance){
+            instance.y = stack.get<float>(-1);
+        })*/
+    );
+};
+
+
+template <typename=void>
+static void define_structs(duktape::engine& js) {
+    define_structs_vector2(js);
+};
+
+}
+
+/*
 template <> struct conv<Vector2>
 {
     using type = Vector2;
@@ -64,7 +112,7 @@ template <> struct conv<Vector2>
 
     }
 };
-
+*/
 
 /*
 template<>
@@ -465,8 +513,5 @@ struct DukType<Camera2D> {
 // TODO: Add Sound
 // TODO: Add Music
 // TODO: Add VrDeviceInfo
-
-}
-}
 
 #endif
