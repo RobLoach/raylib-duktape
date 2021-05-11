@@ -1,12 +1,12 @@
-#ifndef RAYLIB_JS_FUNCTIONS_H__
-#define RAYLIB_JS_FUNCTIONS_H__
+#ifndef RAYLIB_DUKTAPE_FUNCTIONS_H__
+#define RAYLIB_DUKTAPE_FUNCTIONS_H__
 
 #include <raylib.h>
 #include <duktape.h>
 #include <dukglue/dukglue.h>
-#include "raylib-js-structs.h"
+#include "raylib-duktape-structs.h"
 
-void raylib_js_register_functions(duk_context* ctx) {
+void raylib_duktape_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &InitWindow, "InitWindow");
     dukglue_register_function(ctx, &WindowShouldClose, "WindowShouldClose");
     dukglue_register_function(ctx, &CloseWindow, "CloseWindow");

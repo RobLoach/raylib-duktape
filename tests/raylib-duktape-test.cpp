@@ -3,9 +3,9 @@
 #include "raylib.h"
 #include <duktape.h>
 #include <dukglue/dukglue.h>
-#include "raylib-js.h"
+#include "raylib-duktape.h"
 
-TEST_CASE("raylib-js", "[raylib-js]") {
+TEST_CASE("raylib-duktape", "[raylib-duktape]") {
     // Create the Duktape environment.
     duk_context* ctx = duk_create_heap_default();
 

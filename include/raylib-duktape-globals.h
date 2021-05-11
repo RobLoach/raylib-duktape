@@ -1,10 +1,10 @@
-#ifndef RAYLIB_JS_GLOBALS_H__
-#define RAYLIB_JS_GLOBALS_H__
+#ifndef RAYLIB_DUKTAPE_GLOBALS_H__
+#define RAYLIB_DUKTAPE_GLOBALS_H__
 
 #include <raylib.h>
 #include <dukglue/dukglue.h>
 
-void raylib_js_globals(duk_context* ctx) {
+void raylib_duktape_globals(duk_context* ctx) {
     dukglue_register_global(ctx, LIGHTGRAY, "LIGHTGRAY");
     dukglue_register_global(ctx, GRAY, "GRAY");
     dukglue_register_global(ctx, DARKGRAY, "DARKGRAY");

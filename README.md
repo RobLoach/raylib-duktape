@@ -1,8 +1,8 @@
-# raylib-js
+# raylib-duktape
 
 JavaScript bindings for [raylib](https://www.raylib.com/), a simple and easy-to-use library to learn videogames programming.
 
-`raylib-js` uses [Duktape](https://duktape.org/) and [Dukglue](https://github.com/Aloshi/dukglue).
+`raylib-duktape` uses [Duktape](https://duktape.org/) and [Dukglue](https://github.com/Aloshi/dukglue).
 
 ## Example
 
@@ -25,18 +25,18 @@ CloseWindow()
 
 ## CLI
 
-A [raylib-js](bin/raylib-js.cpp) CLI launcher is provided to allow running raylib JavaScript files.
+A [raylib-duktape](bin/raylib-duktape.cpp) CLI launcher is provided to allow running raylib JavaScript files.
 
 ```
-raylib-js core_basic_window.js
+raylib-duktape core_basic_window.js
 ```
 
 ## API
 
-Initialize raylib-js through your Duktape context.
+Initialize raylib-duktape through your Duktape context.
 
 ```
-#include "raylib-js.h"
+#include "raylib-duktape.h"
 
 // After initializing the Duktape heap...
 duk_module_raylib_init(ctx);
@@ -45,8 +45,8 @@ duk_module_raylib_init(ctx);
 ## Build
 
 ``` bash
-git clone https://github.com/RobLoach/raylib-js.git
-cd raylib-js
+git clone https://github.com/RobLoach/raylib-duktape.git
+cd raylib-duktape
 mkdir build
 cd build
 cmake ..
