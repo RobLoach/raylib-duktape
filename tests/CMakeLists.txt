@@ -28,7 +28,7 @@ macro(ADD_CATCH_TESTS executable)
   endforeach()
 endmacro()
 
-list(APPEND LIBS raylib duktape dukglue raylib-js-h)
+list(APPEND LIBS raylib duktape dukglue raylib-duktape-h)
 list(APPEND SOURCES raylib-duktape-test.cpp)
 add_executable(raylib-duktape-test ${SOURCES})
 

@@ -33,8 +33,8 @@ void raylib_duktape_globals(duk_context* ctx) {
     dukglue_register_global(ctx, RAYWHITE, "RAYWHITE");
 
     dukglue_register_global(ctx, (float)PI, "PI");
-    dukglue_register_global(ctx, (int)MAX_TOUCH_POINTS, "MAX_TOUCH_POINTS");
-    dukglue_register_global(ctx, (int)FLAG_SHOW_LOGO, "FLAG_SHOW_LOGO");
+    // dukglue_register_global(ctx, (int)MAX_TOUCH_POINTS, "MAX_TOUCH_POINTS");
+    // dukglue_register_global(ctx, (int)FLAG_SHOW_LOGO, "FLAG_SHOW_LOGO");
     dukglue_register_global(ctx, (int)FLAG_FULLSCREEN_MODE, "FLAG_FULLSCREEN_MODE");
     dukglue_register_global(ctx, (int)FLAG_WINDOW_RESIZABLE, "FLAG_WINDOW_RESIZABLE");
     dukglue_register_global(ctx, (int)FLAG_WINDOW_UNDECORATED, "FLAG_WINDOW_UNDECORATED");
@@ -187,7 +187,7 @@ void raylib_duktape_globals(duk_context* ctx) {
     dukglue_register_global(ctx, (int)GAMEPAD_BUTTON_RIGHT_THUMB, "GAMEPAD_BUTTON_RIGHT_THUMB");
 
     // GamepadAxis
-    dukglue_register_global(ctx, (int)GAMEPAD_AXIS_UNKNOWN, "GAMEPAD_AXIS_UNKNOWN");
+    //dukglue_register_global(ctx, (int)GAMEPAD_AXIS_UNKNOWN, "GAMEPAD_AXIS_UNKNOWN");
     dukglue_register_global(ctx, (int)GAMEPAD_AXIS_LEFT_X, "GAMEPAD_AXIS_LEFT_X");
     dukglue_register_global(ctx, (int)GAMEPAD_AXIS_LEFT_Y, "GAMEPAD_AXIS_LEFT_Y");
     dukglue_register_global(ctx, (int)GAMEPAD_AXIS_RIGHT_X, "GAMEPAD_AXIS_RIGHT_X");
