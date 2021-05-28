@@ -47,6 +47,7 @@ duk_module_raylib_init(ctx);
 ``` bash
 git clone https://github.com/RobLoach/raylib-duktape.git
 cd raylib-duktape
+git submodule update --init
 mkdir build
 cd build
 cmake ..
