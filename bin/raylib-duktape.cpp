@@ -4,7 +4,7 @@
 #include "raylib.h"
 #include <duktape.h>
 #include <console/duk_console.h>
-#include "raylib-js.h"
+#include "raylib-duktape.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     switch (argc) {
         case 0:
-            executableName = "raylib-js";
+            executableName = "raylib-duktape";
             fileToLoad = "main.js";
             break;
         case 1:

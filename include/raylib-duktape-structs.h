@@ -1,5 +1,5 @@
-#ifndef RAYLIB_JS_STRUCTS_H__
-#define RAYLIB_JS_STRUCTS_H__
+#ifndef RAYLIB_DUKTAPE_STRUCTS_H__
+#define RAYLIB_DUKTAPE_STRUCTS_H__
 
 #include <raylib.h>
 #include <duktape.h>

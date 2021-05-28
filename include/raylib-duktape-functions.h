@@ -1,12 +1,12 @@
-#ifndef RAYLIB_JS_FUNCTIONS_H__
-#define RAYLIB_JS_FUNCTIONS_H__
+#ifndef RAYLIB_DUKTAPE_FUNCTIONS_H__
+#define RAYLIB_DUKTAPE_FUNCTIONS_H__
 
 #include <raylib.h>
 #include <duktape.h>
 #include <dukglue/dukglue.h>
-#include "raylib-js-structs.h"
+#include "raylib-duktape-structs.h"
 
-void raylib_js_register_functions(duk_context* ctx) {
+void raylib_duktape_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &InitWindow, "InitWindow");
     dukglue_register_function(ctx, &WindowShouldClose, "WindowShouldClose");
     dukglue_register_function(ctx, &CloseWindow, "CloseWindow");
@@ -15,8 +15,8 @@ void raylib_js_register_functions(duk_context* ctx) {
     dukglue_register_function(ctx, &IsWindowResized, "IsWindowResized");
     dukglue_register_function(ctx, &IsWindowHidden, "IsWindowHidden");
     dukglue_register_function(ctx, &ToggleFullscreen, "ToggleFullscreen");
-    dukglue_register_function(ctx, &UnhideWindow, "UnhideWindow");
-    dukglue_register_function(ctx, &HideWindow, "HideWindow");
+    // dukglue_register_function(ctx, &UnhideWindow, "UnhideWindow");
+    // dukglue_register_function(ctx, &HideWindow, "HideWindow");
     dukglue_register_function(ctx, &SetWindowIcon, "SetWindowIcon");
     dukglue_register_function(ctx, &SetWindowTitle, "SetWindowTitle");
     dukglue_register_function(ctx, &SetWindowPosition, "SetWindowPosition");
@@ -91,8 +91,8 @@ void raylib_js_register_functions(duk_context* ctx) {
     //dukglue_register_function(ctx, &GetDroppedFiles, "GetDroppedFiles");
     dukglue_register_function(ctx, &ClearDroppedFiles, "ClearDroppedFiles");
     dukglue_register_function(ctx, &GetFileModTime, "GetFileModTime");
-    dukglue_register_function(ctx, &StorageSaveValue, "StorageSaveValue");
-    dukglue_register_function(ctx, &StorageLoadValue, "StorageLoadValue");
+    // dukglue_register_function(ctx, &StorageSaveValue, "StorageSaveValue");
+    // dukglue_register_function(ctx, &StorageLoadValue, "StorageLoadValue");
     dukglue_register_function(ctx, &OpenURL, "OpenURL");
     dukglue_register_function(ctx, &IsKeyPressed, "IsKeyPressed");
     dukglue_register_function(ctx, &IsKeyDown, "IsKeyDown");
@@ -268,7 +268,7 @@ void raylib_js_register_functions(duk_context* ctx) {
     //dukglue_register_function(ctx, &GetNextCodepoint, "GetNextCodepoint");
     dukglue_register_function(ctx, &TextIsEqual, "TextIsEqual");
     dukglue_register_function(ctx, &TextLength, "TextLength");
-    dukglue_register_function(ctx, &TextCountCodepoints, "TextCountCodepoints");
+    // dukglue_register_function(ctx, &TextCountCodepoints, "TextCountCodepoints");
     //dukglue_register_function(ctx, &TextFormat, "TextFormat");
     dukglue_register_function(ctx, &TextSubtext, "TextSubtext");
     //dukglue_register_function(ctx, &TextReplace, "TextReplace");

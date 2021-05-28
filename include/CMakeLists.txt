@@ -1,14 +1,14 @@
-add_library(raylib-js-h INTERFACE)
+add_library(raylib-duktape-h INTERFACE)
 
-set(RAYLIBJS_HEADERS
-  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js-functions.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js-globals.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-js-structs.h
+set(RAYLIB_DUKTAPE_HEADERS
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-duktape.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-duktape-functions.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-duktape-globals.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-duktape-structs.h
 )
 
 install(FILES
-  ${RAYLIBJS_HEADERS} DESTINATION include/raylib-js
+  ${RAYLIB_DUKTAPE_HEADERS} DESTINATION include/raylib-duktape
 )
 
-target_include_directories(raylib-js-h INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(raylib-duktape-h INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
