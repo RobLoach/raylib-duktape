@@ -1,18 +1,10 @@
 add_library(raylib-duktape STATIC raylib-duktape.cpp)
-
-set(RAYLIB_DUKTAPE_HEADERS
-  ${CMAKE_CURRENT_SOURCE_DIR}/raylib-duktape.h
-)
-
 install(FILES
-  ${RAYLIB_DUKTAPE_HEADERS} DESTINATION include
+    raylib-duktape.h DESTINATION include
 )
-
 target_include_directories(raylib-duktape INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-
-# Dependencies
-
+# dukglue
 find_package(dukglue 2.5 QUIET)
 if (NOT dukglue_FOUND)
   include(FetchContent)
@@ -45,6 +37,7 @@ if (NOT duktapecmake_POPULATED)
     add_subdirectory(${duktapecmake_SOURCE_DIR} ${duktapecmake_BINARY_DIR})
 endif()
 
+# raylib
 set(RAYLIB_VERSION 4.2.0)
 find_package(raylib ${RAYLIB_VERSION} QUIET)
 if (NOT raylib_FOUND)

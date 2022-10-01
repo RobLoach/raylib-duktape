@@ -15,6 +15,6 @@ add_subdirectory(examples)
 
 include(CTest)
 enable_testing()
-if(BUILD_TESTING)
+if (BUILD_TESTING)
 	add_subdirectory(tests)
 endif()
