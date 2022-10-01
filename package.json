@@ -1,0 +1,29 @@
+{
+  "name": "raylib-duktape",
+  "version": "0.0.1",
+  "description": "JavaScript bindings for [raylib](https://www.raylib.com/), a simple and easy-to-use library to learn videogames programming.",
+  "main": "index.js",
+  "private": true,
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node generator"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobLoach/raylib-duktape.git"
+  },
+  "author": "Rob Loach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobLoach/raylib-duktape/issues"
+  },
+  "homepage": "https://github.com/RobLoach/raylib-duktape#readme",
+  "devDependencies": {
+    "@raylib/api": "^4.2.0",
+    "meow": "^10.1.4"
+  }
+}

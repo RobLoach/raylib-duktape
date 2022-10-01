@@ -8,3 +8,4 @@ _deps
 CPack*
 CMakeCache.txt
 bin/raylib-duktape
+node_modules
