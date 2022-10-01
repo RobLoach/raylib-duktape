@@ -39,7 +39,7 @@ Initialize raylib-duktape through your Duktape context.
 #include "raylib-duktape.h"
 
 // After initializing the Duktape heap...
-duk_module_raylib_init(ctx);
+duk_raylib_init(ctx);
 ```
 
 ## Build
@@ -47,10 +47,13 @@ duk_module_raylib_init(ctx);
 ``` bash
 git clone https://github.com/RobLoach/raylib-duktape.git
 cd raylib-duktape
-git submodule update --init
 mkdir build
 cd build
 cmake ..
 make
 make test
 ```
+
+## License
+
+[zlib](LICENSE)

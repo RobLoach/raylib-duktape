@@ -9,7 +9,7 @@ add_definitions(
 	-Wfatal-errors
 )
 
-add_subdirectory(include)
+add_subdirectory(lib)
 add_subdirectory(bin)
 add_subdirectory(examples)
 
