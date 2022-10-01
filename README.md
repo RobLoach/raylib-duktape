@@ -1,6 +1,8 @@
+![logo.png](examples/shapes/logo.png)
+
 # raylib-duktape
 
-JavaScript bindings for [raylib](https://www.raylib.com/), a simple and easy-to-use library to learn videogames programming.
+Embedded JavaScript bindings for [raylib](https://www.raylib.com/), a simple and easy-to-use library to learn videogames programming.
 
 `raylib-duktape` uses [Duktape](https://duktape.org/) and [Dukglue](https://github.com/Aloshi/dukglue).
 
@@ -39,7 +41,7 @@ Initialize raylib-duktape through your Duktape context.
 #include "raylib-duktape.h"
 
 // After initializing the Duktape heap...
-duk_raylib_init(ctx);
+duk_raylib_init(ctx, 0);
 ```
 
 ## Build

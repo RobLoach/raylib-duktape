@@ -11,6 +11,8 @@ int main(int argc, char *argv[]) {
     std::string executableName;
     std::string fileToLoad;
 
+    SetTraceLogLevel(LOG_FATAL);
+
     switch (argc) {
         case 0:
             executableName = "raylib-duktape";
@@ -60,7 +62,7 @@ int main(int argc, char *argv[]) {
     duk_raylib_init(ctx, 0);
 
     // Eval the loaded code.
-	dukglue_peval<void>(ctx, contents.c_str());
+    dukglue_peval<void>(ctx, contents.c_str());
 
     // Destroy the environment.
 	duk_destroy_heap(ctx);

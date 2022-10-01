@@ -61,7 +61,6 @@ r.enums.push({
 })
 
 const defines = r.defines.map((define) => {
-    console.log(define)
     if (definesBlacklist.includes(define.name)) {
         return `    // Skipped: ${define.name}`
     }
