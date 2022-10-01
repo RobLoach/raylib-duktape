@@ -1,32 +1,36 @@
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
 #include "raylib.h"
+#include "raylib-assert.h"
 #include <duktape.h>
 #include <dukglue/dukglue.h>
 #include "raylib-duktape.h"
 
-TEST_CASE("raylib-duktape", "[raylib-duktape]") {
+int main() {
     // Create the Duktape environment.
     duk_context* ctx = duk_create_heap_default();
 
     // Register the raylib.js context.
-    duk_module_raylib_init(ctx);
+    duk_raylib_init(ctx, 0);
 
-    SECTION("IsWindowReady()") {
+    {
         bool output = dukglue_peval<bool>(ctx, "IsWindowReady()");
-        REQUIRE(output == false);
+        AssertNot(output, "IsWindowReady()");
     }
 
-    SECTION("GetRandomValue(10,20)") {
+    {
         int output = dukglue_peval<int>(ctx, "GetRandomValue(10,20)");
-        REQUIRE(output >= 10);
-        REQUIRE(output <= 20);
+        Assert(output >= 10, "GetRandomValue(10,20)");
+        Assert(output <= 20, "GetRandomValue(10,20)");
     }
 
-    SECTION("Color") {
+    {
         int r = dukglue_peval<int>(ctx, "RAYWHITE.r");
-        REQUIRE(r == RAYWHITE.r);
+        int expected = RAYWHITE.r;
+        AssertEqual(r, expected);
     }
 
     duk_destroy_heap(ctx);
+
+    TraceLog(LOG_INFO, "Tests completed successfully");
+
+    return 0;
 }

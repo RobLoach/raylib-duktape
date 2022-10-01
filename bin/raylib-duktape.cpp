@@ -3,11 +3,11 @@
 
 #include "raylib.h"
 #include <duktape.h>
-#include <console/duk_console.h>
-#include "raylib-duktape.h"
+//#include <console/duk_console.h>
+#include "../lib/raylib-duktape.h"
+#include <dukglue/dukglue.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     std::string executableName;
     std::string fileToLoad;
 
@@ -37,20 +37,27 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    std::string contents(LoadText(fileToLoad.c_str()));
+    char* fileText = LoadFileText(fileToLoad.c_str());
+    std::string contents(fileText);
+    UnloadFileText(fileText);
     if (contents.empty()) {
     	std::cout << "File was empty." << std::endl;
     	return 1;
+    }
+
+    // Make sure it runs in the correct folder.
+    if (!ChangeDirectory(GetDirectoryPath(fileToLoad.c_str()))) {
+        TraceLog(LOG_WARNING, "Failed to change directory");
     }
 
     // Construct the Duktape environment.
     duk_context* ctx = duk_create_heap_default();
 
     // Initialize the console module.
-    duk_console_init(ctx, 0);
+    //duk_console_init(ctx, 0);
 
     // Initialize the raylib module.
-    duk_module_raylib_init(ctx);
+    duk_raylib_init(ctx, 0);
 
     // Eval the loaded code.
 	dukglue_peval<void>(ctx, contents.c_str());

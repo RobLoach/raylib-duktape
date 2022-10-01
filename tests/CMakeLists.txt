@@ -1,36 +1,8 @@
-# Add catch tests macro
-macro(ADD_CATCH_TESTS executable)
-  if (MSVC)
-    file(TO_NATIVE_PATH "${QT_LIBRARY_DIR}" QT_LIB_PATH)
-    set(NEWPATH "${QT_LIB_PATH};$ENV{PATH}")
-  else()
-    set(NEWPATH $ENV{PATH})
-  endif()
+add_executable(raylib-duktape-test
+    raylib-duktape-test.cpp
+    #${duktape_SOURCE_DIR}/extras/console/duk_console.c
+)
 
-  get_target_property(target_files ${executable} SOURCES)
+target_link_libraries(raylib-duktape-test raylib-duktape)
 
-  message("Files: ${target_files}")
-
-  foreach(source ${target_files})
-    if(NOT "${source}" MATCHES "/moc_.*cxx")
-      string(REGEX MATCH .*cpp source "${source}")
-      if(source)
-        file(READ "${source}" contents)
-        string(REGEX MATCHALL "TEST_CASE\\([ ]*\"[^\"]+\"" found_tests ${contents})
-        foreach(hit ${found_tests})
-          message("Found Test: ${hit}")
-          string(REGEX REPLACE "TEST_CASE\\([ ]*(\"[^\"]+\").*" "\\1" test_name ${hit})
-          add_test(${test_name} "${executable}" ${test_name})
-          set_tests_properties(${test_name} PROPERTIES TIMEOUT 660 ENVIRONMENT "PATH=${NEWPATH}")
-        endforeach()
-      endif()
-    endif()
-  endforeach()
-endmacro()
-
-list(APPEND LIBS raylib duktape dukglue raylib-duktape-h)
-list(APPEND SOURCES raylib-duktape-test.cpp)
-add_executable(raylib-duktape-test ${SOURCES})
-
-target_link_libraries(raylib-duktape-test ${LIBS})
-ADD_CATCH_TESTS(raylib-duktape-test)
+add_test(NAME raylib-duktape-test COMMAND raylib-duktape-test)
