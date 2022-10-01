@@ -27,7 +27,7 @@ CloseWindow()
 
 A [raylib-duktape](bin/raylib-duktape.cpp) CLI launcher is provided to allow running raylib JavaScript files.
 
-```
+``` bash
 raylib-duktape core_basic_window.js
 ```
 
@@ -35,7 +35,7 @@ raylib-duktape core_basic_window.js
 
 Initialize raylib-duktape through your Duktape context.
 
-```
+``` c
 #include "raylib-duktape.h"
 
 // After initializing the Duktape heap...

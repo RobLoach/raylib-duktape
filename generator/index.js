@@ -208,10 +208,11 @@ const functionBlacklist = [
     'AttachAudioStreamProcessor'
 ]
 const functions = r.functions.map((func) => {
+    let prefix = '    '
     if (functionBlacklist.includes(func.name)) {
-        return `    // Skipped: ${func.name}`
+        prefix = '    // '
     }
-    return `    dukglue_register_function(ctx, &${func.name}, "${func.name}");`
+    return `${prefix}dukglue_register_function(ctx, &${func.name}, "${func.name}");`
 }).join('\n')
 
 function readPropertyTypeToFunction(type) {
@@ -264,7 +265,7 @@ const structs = structHeader + r.structs.map((structure) => {
         out.${field.name} = ${func[0]}(ctx, -1);`
         }
         else {
-            readProperties += `\n        // Skipped: ${field.name}\n`
+            readProperties += `\n        // Skipped: ${field.name}`
         }
         if (func[1] != 'skip') {
         pushProperties += `
@@ -272,7 +273,7 @@ const structs = structHeader + r.structs.map((structure) => {
         duk_put_prop_string(ctx, obj_idx, "${field.name}");`
         }
         else {
-            pushProperties += `\n        // Skipped: ${field.name}\n`
+            pushProperties += `\n        // Skipped: ${field.name}`
         }
     }
     return `template<>
@@ -284,8 +285,7 @@ struct DukType<::${structure.name}> {
             duk_int_t type_idx = duk_get_type(ctx, arg_idx);
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
-        ::${structure.name} out;
-        ${readProperties}
+        ::${structure.name} out;${readProperties}
         return out;
     }
     template<typename FullT>

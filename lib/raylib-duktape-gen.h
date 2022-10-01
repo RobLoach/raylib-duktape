@@ -20,7 +20,6 @@ struct DukType<::Vector2> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Vector2 out;
-        
         duk_get_prop_string(ctx, arg_idx, "x");
         out.x = duk_get_number(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "y");
@@ -48,7 +47,6 @@ struct DukType<::Vector3> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Vector3 out;
-        
         duk_get_prop_string(ctx, arg_idx, "x");
         out.x = duk_get_number(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "y");
@@ -80,7 +78,6 @@ struct DukType<::Vector4> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Vector4 out;
-        
         duk_get_prop_string(ctx, arg_idx, "x");
         out.x = duk_get_number(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "y");
@@ -116,7 +113,6 @@ struct DukType<::Matrix> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Matrix out;
-        
         duk_get_prop_string(ctx, arg_idx, "m0");
         out.m0 = duk_get_number(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "m4");
@@ -200,7 +196,6 @@ struct DukType<::Color> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Color out;
-        
         duk_get_prop_string(ctx, arg_idx, "r");
         out.r = duk_get_uint(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "g");
@@ -236,7 +231,6 @@ struct DukType<::Rectangle> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Rectangle out;
-        
         duk_get_prop_string(ctx, arg_idx, "x");
         out.x = duk_get_number(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "y");
@@ -272,7 +266,6 @@ struct DukType<::Image> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Image out;
-        
         duk_get_prop_string(ctx, arg_idx, "data");
         out.data = (void *)duk_get_pointer(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "width");
@@ -312,7 +305,6 @@ struct DukType<::Texture> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Texture out;
-        
         duk_get_prop_string(ctx, arg_idx, "id");
         out.id = duk_get_uint(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "width");
@@ -352,7 +344,6 @@ struct DukType<::RenderTexture> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::RenderTexture out;
-        
         duk_get_prop_string(ctx, arg_idx, "id");
         out.id = duk_get_uint(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "texture");
@@ -384,7 +375,6 @@ struct DukType<::NPatchInfo> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::NPatchInfo out;
-        
         duk_get_prop_string(ctx, arg_idx, "source");
         out.source = raylib_duktape_get<Rectangle>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "left");
@@ -428,7 +418,6 @@ struct DukType<::GlyphInfo> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::GlyphInfo out;
-        
         duk_get_prop_string(ctx, arg_idx, "value");
         out.value = duk_get_int(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "offsetX");
@@ -468,7 +457,6 @@ struct DukType<::Font> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Font out;
-        
         duk_get_prop_string(ctx, arg_idx, "baseSize");
         out.baseSize = duk_get_int(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "glyphCount");
@@ -512,7 +500,6 @@ struct DukType<::Camera3D> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Camera3D out;
-        
         duk_get_prop_string(ctx, arg_idx, "position");
         out.position = raylib_duktape_get<Vector3>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "target");
@@ -552,7 +539,6 @@ struct DukType<::Camera2D> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Camera2D out;
-        
         duk_get_prop_string(ctx, arg_idx, "offset");
         out.offset = raylib_duktape_get<Vector2>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "target");
@@ -588,7 +574,6 @@ struct DukType<::Mesh> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Mesh out;
-        
         duk_get_prop_string(ctx, arg_idx, "vertexCount");
         out.vertexCount = duk_get_int(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "triangleCount");
@@ -668,7 +653,6 @@ struct DukType<::Shader> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Shader out;
-        
         duk_get_prop_string(ctx, arg_idx, "id");
         out.id = duk_get_uint(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "locs");
@@ -696,7 +680,6 @@ struct DukType<::MaterialMap> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::MaterialMap out;
-        
         duk_get_prop_string(ctx, arg_idx, "texture");
         out.texture = raylib_duktape_get<Texture2D>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "color");
@@ -728,13 +711,11 @@ struct DukType<::Material> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Material out;
-        
         duk_get_prop_string(ctx, arg_idx, "shader");
         out.shader = raylib_duktape_get<Shader>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "maps");
         out.maps = (MaterialMap *)duk_get_pointer(ctx, -1);
         // Skipped: params
-
         return out;
     }
     template<typename FullT>
@@ -746,7 +727,6 @@ struct DukType<::Material> {
         duk_push_pointer(ctx, value.maps);
         duk_put_prop_string(ctx, obj_idx, "maps");
         // Skipped: params
-
     }
 };
 
@@ -760,7 +740,6 @@ struct DukType<::Transform> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Transform out;
-        
         duk_get_prop_string(ctx, arg_idx, "translation");
         out.translation = raylib_duktape_get<Vector3>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "rotation");
@@ -792,7 +771,6 @@ struct DukType<::BoneInfo> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::BoneInfo out;
-        
         duk_get_prop_string(ctx, arg_idx, "name");
         out.name = duk_get_string(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "parent");
@@ -820,7 +798,6 @@ struct DukType<::Model> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Model out;
-        
         duk_get_prop_string(ctx, arg_idx, "transform");
         out.transform = raylib_duktape_get<Matrix>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "meshCount");
@@ -876,7 +853,6 @@ struct DukType<::ModelAnimation> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::ModelAnimation out;
-        
         duk_get_prop_string(ctx, arg_idx, "boneCount");
         out.boneCount = duk_get_int(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "frameCount");
@@ -912,7 +888,6 @@ struct DukType<::Ray> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Ray out;
-        
         duk_get_prop_string(ctx, arg_idx, "position");
         out.position = raylib_duktape_get<Vector3>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "direction");
@@ -940,7 +915,6 @@ struct DukType<::RayCollision> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::RayCollision out;
-        
         duk_get_prop_string(ctx, arg_idx, "hit");
         out.hit = duk_get_boolean(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "distance");
@@ -976,7 +950,6 @@ struct DukType<::BoundingBox> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::BoundingBox out;
-        
         duk_get_prop_string(ctx, arg_idx, "min");
         out.min = raylib_duktape_get<Vector3>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "max");
@@ -1004,7 +977,6 @@ struct DukType<::Wave> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Wave out;
-        
         duk_get_prop_string(ctx, arg_idx, "frameCount");
         out.frameCount = duk_get_uint(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "sampleRate");
@@ -1044,7 +1016,6 @@ struct DukType<::AudioStream> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::AudioStream out;
-        
         duk_get_prop_string(ctx, arg_idx, "buffer");
         out.buffer = (rAudioBuffer *)duk_get_pointer(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "processor");
@@ -1084,7 +1055,6 @@ struct DukType<::Sound> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Sound out;
-        
         duk_get_prop_string(ctx, arg_idx, "stream");
         out.stream = raylib_duktape_get<AudioStream>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "frameCount");
@@ -1112,7 +1082,6 @@ struct DukType<::Music> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::Music out;
-        
         duk_get_prop_string(ctx, arg_idx, "stream");
         out.stream = raylib_duktape_get<AudioStream>(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "frameCount");
@@ -1152,7 +1121,6 @@ struct DukType<::VrDeviceInfo> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::VrDeviceInfo out;
-        
         duk_get_prop_string(ctx, arg_idx, "hResolution");
         out.hResolution = duk_get_int(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "vResolution");
@@ -1170,9 +1138,7 @@ struct DukType<::VrDeviceInfo> {
         duk_get_prop_string(ctx, arg_idx, "interpupillaryDistance");
         out.interpupillaryDistance = duk_get_number(ctx, -1);
         // Skipped: lensDistortionValues
-
         // Skipped: chromaAbCorrection
-
         return out;
     }
     template<typename FullT>
@@ -1196,9 +1162,7 @@ struct DukType<::VrDeviceInfo> {
         duk_push_number(ctx, value.interpupillaryDistance);
         duk_put_prop_string(ctx, obj_idx, "interpupillaryDistance");
         // Skipped: lensDistortionValues
-
         // Skipped: chromaAbCorrection
-
     }
 };
 
@@ -1212,23 +1176,14 @@ struct DukType<::VrStereoConfig> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::VrStereoConfig out;
-        
         // Skipped: projection
-
         // Skipped: viewOffset
-
         // Skipped: leftLensCenter
-
         // Skipped: rightLensCenter
-
         // Skipped: leftScreenCenter
-
         // Skipped: rightScreenCenter
-
         // Skipped: scale
-
         // Skipped: scaleIn
-
         return out;
     }
     template<typename FullT>
@@ -1236,21 +1191,13 @@ struct DukType<::VrStereoConfig> {
         duk_idx_t obj_idx = duk_push_object(ctx);
         
         // Skipped: projection
-
         // Skipped: viewOffset
-
         // Skipped: leftLensCenter
-
         // Skipped: rightLensCenter
-
         // Skipped: leftScreenCenter
-
         // Skipped: rightScreenCenter
-
         // Skipped: scale
-
         // Skipped: scaleIn
-
     }
 };
 
@@ -1264,7 +1211,6 @@ struct DukType<::FilePathList> {
             duk_error(ctx, DUK_ERR_TYPE_ERROR, "Argument %d: expected object, got %s", arg_idx, detail::get_type_name(type_idx));
         }
         ::FilePathList out;
-        
         duk_get_prop_string(ctx, arg_idx, "capacity");
         out.capacity = duk_get_uint(ctx, -1);
         duk_get_prop_string(ctx, arg_idx, "count");
@@ -1704,7 +1650,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &SetWindowMinSize, "SetWindowMinSize");
     dukglue_register_function(ctx, &SetWindowSize, "SetWindowSize");
     dukglue_register_function(ctx, &SetWindowOpacity, "SetWindowOpacity");
-    // Skipped: GetWindowHandle
+    // dukglue_register_function(ctx, &GetWindowHandle, "GetWindowHandle");
     dukglue_register_function(ctx, &GetScreenWidth, "GetScreenWidth");
     dukglue_register_function(ctx, &GetScreenHeight, "GetScreenHeight");
     dukglue_register_function(ctx, &GetRenderWidth, "GetRenderWidth");
@@ -1755,12 +1701,12 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &LoadShader, "LoadShader");
     dukglue_register_function(ctx, &LoadShaderFromMemory, "LoadShaderFromMemory");
     dukglue_register_function(ctx, &GetShaderLocation, "GetShaderLocation");
-    // Skipped: GetShaderLocationAttrib
-    // Skipped: SetShaderValue
-    // Skipped: SetShaderValueV
-    // Skipped: SetShaderValueMatrix
-    // Skipped: SetShaderValueTexture
-    // Skipped: UnloadShader
+    // dukglue_register_function(ctx, &GetShaderLocationAttrib, "GetShaderLocationAttrib");
+    // dukglue_register_function(ctx, &SetShaderValue, "SetShaderValue");
+    // dukglue_register_function(ctx, &SetShaderValueV, "SetShaderValueV");
+    // dukglue_register_function(ctx, &SetShaderValueMatrix, "SetShaderValueMatrix");
+    // dukglue_register_function(ctx, &SetShaderValueTexture, "SetShaderValueTexture");
+    // dukglue_register_function(ctx, &UnloadShader, "UnloadShader");
     dukglue_register_function(ctx, &GetMouseRay, "GetMouseRay");
     dukglue_register_function(ctx, &GetCameraMatrix, "GetCameraMatrix");
     dukglue_register_function(ctx, &GetCameraMatrix2D, "GetCameraMatrix2D");
@@ -1776,24 +1722,24 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &SetRandomSeed, "SetRandomSeed");
     dukglue_register_function(ctx, &TakeScreenshot, "TakeScreenshot");
     dukglue_register_function(ctx, &SetConfigFlags, "SetConfigFlags");
-    // Skipped: TraceLog
+    // dukglue_register_function(ctx, &TraceLog, "TraceLog");
     dukglue_register_function(ctx, &SetTraceLogLevel, "SetTraceLogLevel");
-    // Skipped: MemAlloc
-    // Skipped: MemRealloc
-    // Skipped: MemFree
+    // dukglue_register_function(ctx, &MemAlloc, "MemAlloc");
+    // dukglue_register_function(ctx, &MemRealloc, "MemRealloc");
+    // dukglue_register_function(ctx, &MemFree, "MemFree");
     dukglue_register_function(ctx, &OpenURL, "OpenURL");
-    // Skipped: SetTraceLogCallback
-    // Skipped: SetLoadFileDataCallback
-    // Skipped: SetSaveFileDataCallback
-    // Skipped: SetLoadFileTextCallback
-    // Skipped: SetSaveFileTextCallback
-    // Skipped: LoadFileData
-    // Skipped: UnloadFileData
-    // Skipped: SaveFileData
+    // dukglue_register_function(ctx, &SetTraceLogCallback, "SetTraceLogCallback");
+    // dukglue_register_function(ctx, &SetLoadFileDataCallback, "SetLoadFileDataCallback");
+    // dukglue_register_function(ctx, &SetSaveFileDataCallback, "SetSaveFileDataCallback");
+    // dukglue_register_function(ctx, &SetLoadFileTextCallback, "SetLoadFileTextCallback");
+    // dukglue_register_function(ctx, &SetSaveFileTextCallback, "SetSaveFileTextCallback");
+    // dukglue_register_function(ctx, &LoadFileData, "LoadFileData");
+    // dukglue_register_function(ctx, &UnloadFileData, "UnloadFileData");
+    // dukglue_register_function(ctx, &SaveFileData, "SaveFileData");
     dukglue_register_function(ctx, &ExportDataAsCode, "ExportDataAsCode");
-    // Skipped: LoadFileText
-    // Skipped: UnloadFileText
-    // Skipped: SaveFileText
+    // dukglue_register_function(ctx, &LoadFileText, "LoadFileText");
+    // dukglue_register_function(ctx, &UnloadFileText, "UnloadFileText");
+    // dukglue_register_function(ctx, &SaveFileText, "SaveFileText");
     dukglue_register_function(ctx, &FileExists, "FileExists");
     dukglue_register_function(ctx, &DirectoryExists, "DirectoryExists");
     dukglue_register_function(ctx, &IsFileExtension, "IsFileExtension");
@@ -1814,10 +1760,10 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &LoadDroppedFiles, "LoadDroppedFiles");
     dukglue_register_function(ctx, &UnloadDroppedFiles, "UnloadDroppedFiles");
     dukglue_register_function(ctx, &GetFileModTime, "GetFileModTime");
-    // Skipped: CompressData
-    // Skipped: DecompressData
-    // Skipped: EncodeDataBase64
-    // Skipped: DecodeDataBase64
+    // dukglue_register_function(ctx, &CompressData, "CompressData");
+    // dukglue_register_function(ctx, &DecompressData, "DecompressData");
+    // dukglue_register_function(ctx, &EncodeDataBase64, "EncodeDataBase64");
+    // dukglue_register_function(ctx, &DecodeDataBase64, "DecodeDataBase64");
     dukglue_register_function(ctx, &IsKeyPressed, "IsKeyPressed");
     dukglue_register_function(ctx, &IsKeyDown, "IsKeyDown");
     dukglue_register_function(ctx, &IsKeyReleased, "IsKeyReleased");
@@ -1863,7 +1809,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &GetGesturePinchVector, "GetGesturePinchVector");
     dukglue_register_function(ctx, &GetGesturePinchAngle, "GetGesturePinchAngle");
     dukglue_register_function(ctx, &SetCameraMode, "SetCameraMode");
-    // Skipped: UpdateCamera
+    // dukglue_register_function(ctx, &UpdateCamera, "UpdateCamera");
     dukglue_register_function(ctx, &SetCameraPanControl, "SetCameraPanControl");
     dukglue_register_function(ctx, &SetCameraAltControl, "SetCameraAltControl");
     dukglue_register_function(ctx, &SetCameraSmoothZoomControl, "SetCameraSmoothZoomControl");
@@ -1877,7 +1823,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawLineBezier, "DrawLineBezier");
     dukglue_register_function(ctx, &DrawLineBezierQuad, "DrawLineBezierQuad");
     dukglue_register_function(ctx, &DrawLineBezierCubic, "DrawLineBezierCubic");
-    // Skipped: DrawLineStrip
+    // dukglue_register_function(ctx, &DrawLineStrip, "DrawLineStrip");
     dukglue_register_function(ctx, &DrawCircle, "DrawCircle");
     dukglue_register_function(ctx, &DrawCircleSector, "DrawCircleSector");
     dukglue_register_function(ctx, &DrawCircleSectorLines, "DrawCircleSectorLines");
@@ -1901,24 +1847,24 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawRectangleRoundedLines, "DrawRectangleRoundedLines");
     dukglue_register_function(ctx, &DrawTriangle, "DrawTriangle");
     dukglue_register_function(ctx, &DrawTriangleLines, "DrawTriangleLines");
-    // Skipped: DrawTriangleFan
-    // Skipped: DrawTriangleStrip
-    // Skipped: DrawPoly
-    // Skipped: DrawPolyLines
-    // Skipped: DrawPolyLinesEx
+    // dukglue_register_function(ctx, &DrawTriangleFan, "DrawTriangleFan");
+    // dukglue_register_function(ctx, &DrawTriangleStrip, "DrawTriangleStrip");
+    // dukglue_register_function(ctx, &DrawPoly, "DrawPoly");
+    // dukglue_register_function(ctx, &DrawPolyLines, "DrawPolyLines");
+    // dukglue_register_function(ctx, &DrawPolyLinesEx, "DrawPolyLinesEx");
     dukglue_register_function(ctx, &CheckCollisionRecs, "CheckCollisionRecs");
     dukglue_register_function(ctx, &CheckCollisionCircles, "CheckCollisionCircles");
     dukglue_register_function(ctx, &CheckCollisionCircleRec, "CheckCollisionCircleRec");
     dukglue_register_function(ctx, &CheckCollisionPointRec, "CheckCollisionPointRec");
     dukglue_register_function(ctx, &CheckCollisionPointCircle, "CheckCollisionPointCircle");
     dukglue_register_function(ctx, &CheckCollisionPointTriangle, "CheckCollisionPointTriangle");
-    // Skipped: CheckCollisionLines
+    // dukglue_register_function(ctx, &CheckCollisionLines, "CheckCollisionLines");
     dukglue_register_function(ctx, &CheckCollisionPointLine, "CheckCollisionPointLine");
     dukglue_register_function(ctx, &GetCollisionRec, "GetCollisionRec");
     dukglue_register_function(ctx, &LoadImage, "LoadImage");
     dukglue_register_function(ctx, &LoadImageRaw, "LoadImageRaw");
-    // Skipped: LoadImageAnim
-    // Skipped: LoadImageFromMemory
+    // dukglue_register_function(ctx, &LoadImageAnim, "LoadImageAnim");
+    // dukglue_register_function(ctx, &LoadImageFromMemory, "LoadImageFromMemory");
     dukglue_register_function(ctx, &LoadImageFromTexture, "LoadImageFromTexture");
     dukglue_register_function(ctx, &LoadImageFromScreen, "LoadImageFromScreen");
     dukglue_register_function(ctx, &UnloadImage, "UnloadImage");
@@ -1935,57 +1881,57 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &ImageFromImage, "ImageFromImage");
     dukglue_register_function(ctx, &ImageText, "ImageText");
     dukglue_register_function(ctx, &ImageTextEx, "ImageTextEx");
-    // Skipped: ImageFormat
-    // Skipped: ImageToPOT
-    // Skipped: ImageCrop
-    // Skipped: ImageAlphaCrop
-    // Skipped: ImageAlphaClear
-    // Skipped: ImageAlphaMask
-    // Skipped: ImageAlphaPremultiply
-    // Skipped: ImageResize
-    // Skipped: ImageResizeNN
-    // Skipped: ImageResizeCanvas
-    // Skipped: ImageMipmaps
-    // Skipped: ImageDither
-    // Skipped: ImageFlipVertical
-    // Skipped: ImageFlipHorizontal
-    // Skipped: ImageRotateCW
-    // Skipped: ImageRotateCCW
-    // Skipped: ImageColorTint
-    // Skipped: ImageColorInvert
-    // Skipped: ImageColorGrayscale
-    // Skipped: ImageColorContrast
-    // Skipped: ImageColorBrightness
-    // Skipped: ImageColorReplace
-    // Skipped: LoadImageColors
-    // Skipped: LoadImagePalette
-    // Skipped: UnloadImageColors
-    // Skipped: UnloadImagePalette
-    // Skipped: GetImageAlphaBorder
-    // Skipped: GetImageColor
-    // Skipped: ImageClearBackground
-    // Skipped: ImageDrawPixel
-    // Skipped: ImageDrawPixelV
-    // Skipped: ImageDrawLine
-    // Skipped: ImageDrawLineV
-    // Skipped: ImageDrawCircle
-    // Skipped: ImageDrawCircleV
-    // Skipped: ImageDrawRectangle
-    // Skipped: ImageDrawRectangleV
-    // Skipped: ImageDrawRectangleRec
-    // Skipped: ImageDrawRectangleLines
-    // Skipped: ImageDraw
-    // Skipped: ImageDrawText
-    // Skipped: ImageDrawTextEx
+    // dukglue_register_function(ctx, &ImageFormat, "ImageFormat");
+    // dukglue_register_function(ctx, &ImageToPOT, "ImageToPOT");
+    // dukglue_register_function(ctx, &ImageCrop, "ImageCrop");
+    // dukglue_register_function(ctx, &ImageAlphaCrop, "ImageAlphaCrop");
+    // dukglue_register_function(ctx, &ImageAlphaClear, "ImageAlphaClear");
+    // dukglue_register_function(ctx, &ImageAlphaMask, "ImageAlphaMask");
+    // dukglue_register_function(ctx, &ImageAlphaPremultiply, "ImageAlphaPremultiply");
+    // dukglue_register_function(ctx, &ImageResize, "ImageResize");
+    // dukglue_register_function(ctx, &ImageResizeNN, "ImageResizeNN");
+    // dukglue_register_function(ctx, &ImageResizeCanvas, "ImageResizeCanvas");
+    // dukglue_register_function(ctx, &ImageMipmaps, "ImageMipmaps");
+    // dukglue_register_function(ctx, &ImageDither, "ImageDither");
+    // dukglue_register_function(ctx, &ImageFlipVertical, "ImageFlipVertical");
+    // dukglue_register_function(ctx, &ImageFlipHorizontal, "ImageFlipHorizontal");
+    // dukglue_register_function(ctx, &ImageRotateCW, "ImageRotateCW");
+    // dukglue_register_function(ctx, &ImageRotateCCW, "ImageRotateCCW");
+    // dukglue_register_function(ctx, &ImageColorTint, "ImageColorTint");
+    // dukglue_register_function(ctx, &ImageColorInvert, "ImageColorInvert");
+    // dukglue_register_function(ctx, &ImageColorGrayscale, "ImageColorGrayscale");
+    // dukglue_register_function(ctx, &ImageColorContrast, "ImageColorContrast");
+    // dukglue_register_function(ctx, &ImageColorBrightness, "ImageColorBrightness");
+    // dukglue_register_function(ctx, &ImageColorReplace, "ImageColorReplace");
+    // dukglue_register_function(ctx, &LoadImageColors, "LoadImageColors");
+    // dukglue_register_function(ctx, &LoadImagePalette, "LoadImagePalette");
+    // dukglue_register_function(ctx, &UnloadImageColors, "UnloadImageColors");
+    // dukglue_register_function(ctx, &UnloadImagePalette, "UnloadImagePalette");
+    // dukglue_register_function(ctx, &GetImageAlphaBorder, "GetImageAlphaBorder");
+    // dukglue_register_function(ctx, &GetImageColor, "GetImageColor");
+    // dukglue_register_function(ctx, &ImageClearBackground, "ImageClearBackground");
+    // dukglue_register_function(ctx, &ImageDrawPixel, "ImageDrawPixel");
+    // dukglue_register_function(ctx, &ImageDrawPixelV, "ImageDrawPixelV");
+    // dukglue_register_function(ctx, &ImageDrawLine, "ImageDrawLine");
+    // dukglue_register_function(ctx, &ImageDrawLineV, "ImageDrawLineV");
+    // dukglue_register_function(ctx, &ImageDrawCircle, "ImageDrawCircle");
+    // dukglue_register_function(ctx, &ImageDrawCircleV, "ImageDrawCircleV");
+    // dukglue_register_function(ctx, &ImageDrawRectangle, "ImageDrawRectangle");
+    // dukglue_register_function(ctx, &ImageDrawRectangleV, "ImageDrawRectangleV");
+    // dukglue_register_function(ctx, &ImageDrawRectangleRec, "ImageDrawRectangleRec");
+    // dukglue_register_function(ctx, &ImageDrawRectangleLines, "ImageDrawRectangleLines");
+    // dukglue_register_function(ctx, &ImageDraw, "ImageDraw");
+    // dukglue_register_function(ctx, &ImageDrawText, "ImageDrawText");
+    // dukglue_register_function(ctx, &ImageDrawTextEx, "ImageDrawTextEx");
     dukglue_register_function(ctx, &LoadTexture, "LoadTexture");
     dukglue_register_function(ctx, &LoadTextureFromImage, "LoadTextureFromImage");
     dukglue_register_function(ctx, &LoadTextureCubemap, "LoadTextureCubemap");
     dukglue_register_function(ctx, &LoadRenderTexture, "LoadRenderTexture");
     dukglue_register_function(ctx, &UnloadTexture, "UnloadTexture");
     dukglue_register_function(ctx, &UnloadRenderTexture, "UnloadRenderTexture");
-    // Skipped: UpdateTexture
-    // Skipped: UpdateTextureRec
-    // Skipped: GenTextureMipmaps
+    // dukglue_register_function(ctx, &UpdateTexture, "UpdateTexture");
+    // dukglue_register_function(ctx, &UpdateTextureRec, "UpdateTextureRec");
+    // dukglue_register_function(ctx, &GenTextureMipmaps, "GenTextureMipmaps");
     dukglue_register_function(ctx, &SetTextureFilter, "SetTextureFilter");
     dukglue_register_function(ctx, &SetTextureWrap, "SetTextureWrap");
     dukglue_register_function(ctx, &DrawTexture, "DrawTexture");
@@ -1996,7 +1942,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawTextureTiled, "DrawTextureTiled");
     dukglue_register_function(ctx, &DrawTexturePro, "DrawTexturePro");
     dukglue_register_function(ctx, &DrawTextureNPatch, "DrawTextureNPatch");
-    // Skipped: DrawTexturePoly
+    // dukglue_register_function(ctx, &DrawTexturePoly, "DrawTexturePoly");
     dukglue_register_function(ctx, &Fade, "Fade");
     dukglue_register_function(ctx, &ColorToInt, "ColorToInt");
     dukglue_register_function(ctx, &ColorNormalize, "ColorNormalize");
@@ -2006,46 +1952,46 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &ColorAlpha, "ColorAlpha");
     dukglue_register_function(ctx, &ColorAlphaBlend, "ColorAlphaBlend");
     dukglue_register_function(ctx, &GetColor, "GetColor");
-    // Skipped: GetPixelColor
-    // Skipped: SetPixelColor
-    // Skipped: GetPixelDataSize
+    // dukglue_register_function(ctx, &GetPixelColor, "GetPixelColor");
+    // dukglue_register_function(ctx, &SetPixelColor, "SetPixelColor");
+    // dukglue_register_function(ctx, &GetPixelDataSize, "GetPixelDataSize");
     dukglue_register_function(ctx, &GetFontDefault, "GetFontDefault");
     dukglue_register_function(ctx, &LoadFont, "LoadFont");
-    // Skipped: LoadFontEx
+    // dukglue_register_function(ctx, &LoadFontEx, "LoadFontEx");
     dukglue_register_function(ctx, &LoadFontFromImage, "LoadFontFromImage");
-    // Skipped: LoadFontFromMemory
-    // Skipped: LoadFontData
-    // Skipped: GenImageFontAtlas
-    // Skipped: UnloadFontData
+    // dukglue_register_function(ctx, &LoadFontFromMemory, "LoadFontFromMemory");
+    // dukglue_register_function(ctx, &LoadFontData, "LoadFontData");
+    // dukglue_register_function(ctx, &GenImageFontAtlas, "GenImageFontAtlas");
+    // dukglue_register_function(ctx, &UnloadFontData, "UnloadFontData");
     dukglue_register_function(ctx, &UnloadFont, "UnloadFont");
-    // Skipped: ExportFontAsCode
+    // dukglue_register_function(ctx, &ExportFontAsCode, "ExportFontAsCode");
     dukglue_register_function(ctx, &DrawFPS, "DrawFPS");
     dukglue_register_function(ctx, &DrawText, "DrawText");
     dukglue_register_function(ctx, &DrawTextEx, "DrawTextEx");
     dukglue_register_function(ctx, &DrawTextPro, "DrawTextPro");
     dukglue_register_function(ctx, &DrawTextCodepoint, "DrawTextCodepoint");
-    // Skipped: DrawTextCodepoints
+    // dukglue_register_function(ctx, &DrawTextCodepoints, "DrawTextCodepoints");
     dukglue_register_function(ctx, &MeasureText, "MeasureText");
     dukglue_register_function(ctx, &MeasureTextEx, "MeasureTextEx");
     dukglue_register_function(ctx, &GetGlyphIndex, "GetGlyphIndex");
     dukglue_register_function(ctx, &GetGlyphInfo, "GetGlyphInfo");
     dukglue_register_function(ctx, &GetGlyphAtlasRec, "GetGlyphAtlasRec");
-    // Skipped: LoadCodepoints
-    // Skipped: UnloadCodepoints
+    // dukglue_register_function(ctx, &LoadCodepoints, "LoadCodepoints");
+    // dukglue_register_function(ctx, &UnloadCodepoints, "UnloadCodepoints");
     dukglue_register_function(ctx, &GetCodepointCount, "GetCodepointCount");
-    // Skipped: GetCodepoint
-    // Skipped: CodepointToUTF8
-    // Skipped: TextCodepointsToUTF8
-    // Skipped: TextCopy
+    // dukglue_register_function(ctx, &GetCodepoint, "GetCodepoint");
+    // dukglue_register_function(ctx, &CodepointToUTF8, "CodepointToUTF8");
+    // dukglue_register_function(ctx, &TextCodepointsToUTF8, "TextCodepointsToUTF8");
+    // dukglue_register_function(ctx, &TextCopy, "TextCopy");
     dukglue_register_function(ctx, &TextIsEqual, "TextIsEqual");
     dukglue_register_function(ctx, &TextLength, "TextLength");
-    // Skipped: TextFormat
+    // dukglue_register_function(ctx, &TextFormat, "TextFormat");
     dukglue_register_function(ctx, &TextSubtext, "TextSubtext");
-    // Skipped: TextReplace
-    // Skipped: TextInsert
-    // Skipped: TextJoin
-    // Skipped: TextSplit
-    // Skipped: TextAppend
+    // dukglue_register_function(ctx, &TextReplace, "TextReplace");
+    // dukglue_register_function(ctx, &TextInsert, "TextInsert");
+    // dukglue_register_function(ctx, &TextJoin, "TextJoin");
+    // dukglue_register_function(ctx, &TextSplit, "TextSplit");
+    // dukglue_register_function(ctx, &TextAppend, "TextAppend");
     dukglue_register_function(ctx, &TextFindIndex, "TextFindIndex");
     dukglue_register_function(ctx, &TextToUpper, "TextToUpper");
     dukglue_register_function(ctx, &TextToLower, "TextToLower");
@@ -2055,7 +2001,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawPoint3D, "DrawPoint3D");
     dukglue_register_function(ctx, &DrawCircle3D, "DrawCircle3D");
     dukglue_register_function(ctx, &DrawTriangle3D, "DrawTriangle3D");
-    // Skipped: DrawTriangleStrip3D
+    // dukglue_register_function(ctx, &DrawTriangleStrip3D, "DrawTriangleStrip3D");
     dukglue_register_function(ctx, &DrawCube, "DrawCube");
     dukglue_register_function(ctx, &DrawCubeV, "DrawCubeV");
     dukglue_register_function(ctx, &DrawCubeWires, "DrawCubeWires");
@@ -2085,14 +2031,14 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &DrawBillboard, "DrawBillboard");
     dukglue_register_function(ctx, &DrawBillboardRec, "DrawBillboardRec");
     dukglue_register_function(ctx, &DrawBillboardPro, "DrawBillboardPro");
-    // Skipped: UploadMesh
-    // Skipped: UpdateMeshBuffer
+    // dukglue_register_function(ctx, &UploadMesh, "UploadMesh");
+    // dukglue_register_function(ctx, &UpdateMeshBuffer, "UpdateMeshBuffer");
     dukglue_register_function(ctx, &UnloadMesh, "UnloadMesh");
     dukglue_register_function(ctx, &DrawMesh, "DrawMesh");
-    // Skipped: DrawMeshInstanced
+    // dukglue_register_function(ctx, &DrawMeshInstanced, "DrawMeshInstanced");
     dukglue_register_function(ctx, &ExportMesh, "ExportMesh");
     dukglue_register_function(ctx, &GetMeshBoundingBox, "GetMeshBoundingBox");
-    // Skipped: GenMeshTangents
+    // dukglue_register_function(ctx, &GenMeshTangents, "GenMeshTangents");
     dukglue_register_function(ctx, &GenMeshPoly, "GenMeshPoly");
     dukglue_register_function(ctx, &GenMeshPlane, "GenMeshPlane");
     dukglue_register_function(ctx, &GenMeshCube, "GenMeshCube");
@@ -2104,15 +2050,15 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &GenMeshKnot, "GenMeshKnot");
     dukglue_register_function(ctx, &GenMeshHeightmap, "GenMeshHeightmap");
     dukglue_register_function(ctx, &GenMeshCubicmap, "GenMeshCubicmap");
-    // Skipped: LoadMaterials
+    // dukglue_register_function(ctx, &LoadMaterials, "LoadMaterials");
     dukglue_register_function(ctx, &LoadMaterialDefault, "LoadMaterialDefault");
     dukglue_register_function(ctx, &UnloadMaterial, "UnloadMaterial");
-    // Skipped: SetMaterialTexture
-    // Skipped: SetModelMeshMaterial
-    // Skipped: LoadModelAnimations
+    // dukglue_register_function(ctx, &SetMaterialTexture, "SetMaterialTexture");
+    // dukglue_register_function(ctx, &SetModelMeshMaterial, "SetModelMeshMaterial");
+    // dukglue_register_function(ctx, &LoadModelAnimations, "LoadModelAnimations");
     dukglue_register_function(ctx, &UpdateModelAnimation, "UpdateModelAnimation");
     dukglue_register_function(ctx, &UnloadModelAnimation, "UnloadModelAnimation");
-    // Skipped: UnloadModelAnimations
+    // dukglue_register_function(ctx, &UnloadModelAnimations, "UnloadModelAnimations");
     dukglue_register_function(ctx, &IsModelAnimationValid, "IsModelAnimationValid");
     dukglue_register_function(ctx, &CheckCollisionSpheres, "CheckCollisionSpheres");
     dukglue_register_function(ctx, &CheckCollisionBoxes, "CheckCollisionBoxes");
@@ -2127,10 +2073,10 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &IsAudioDeviceReady, "IsAudioDeviceReady");
     dukglue_register_function(ctx, &SetMasterVolume, "SetMasterVolume");
     dukglue_register_function(ctx, &LoadWave, "LoadWave");
-    // Skipped: LoadWaveFromMemory
+    // dukglue_register_function(ctx, &LoadWaveFromMemory, "LoadWaveFromMemory");
     dukglue_register_function(ctx, &LoadSound, "LoadSound");
     dukglue_register_function(ctx, &LoadSoundFromWave, "LoadSoundFromWave");
-    // Skipped: UpdateSound
+    // dukglue_register_function(ctx, &UpdateSound, "UpdateSound");
     dukglue_register_function(ctx, &UnloadWave, "UnloadWave");
     dukglue_register_function(ctx, &UnloadSound, "UnloadSound");
     dukglue_register_function(ctx, &ExportWave, "ExportWave");
@@ -2147,12 +2093,12 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &SetSoundPitch, "SetSoundPitch");
     dukglue_register_function(ctx, &SetSoundPan, "SetSoundPan");
     dukglue_register_function(ctx, &WaveCopy, "WaveCopy");
-    // Skipped: WaveCrop
-    // Skipped: WaveFormat
-    // Skipped: LoadWaveSamples
-    // Skipped: UnloadWaveSamples
+    // dukglue_register_function(ctx, &WaveCrop, "WaveCrop");
+    // dukglue_register_function(ctx, &WaveFormat, "WaveFormat");
+    // dukglue_register_function(ctx, &LoadWaveSamples, "LoadWaveSamples");
+    // dukglue_register_function(ctx, &UnloadWaveSamples, "UnloadWaveSamples");
     dukglue_register_function(ctx, &LoadMusicStream, "LoadMusicStream");
-    // Skipped: LoadMusicStreamFromMemory
+    // dukglue_register_function(ctx, &LoadMusicStreamFromMemory, "LoadMusicStreamFromMemory");
     dukglue_register_function(ctx, &UnloadMusicStream, "UnloadMusicStream");
     dukglue_register_function(ctx, &PlayMusicStream, "PlayMusicStream");
     dukglue_register_function(ctx, &IsMusicStreamPlaying, "IsMusicStreamPlaying");
@@ -2168,7 +2114,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &GetMusicTimePlayed, "GetMusicTimePlayed");
     dukglue_register_function(ctx, &LoadAudioStream, "LoadAudioStream");
     dukglue_register_function(ctx, &UnloadAudioStream, "UnloadAudioStream");
-    // Skipped: UpdateAudioStream
+    // dukglue_register_function(ctx, &UpdateAudioStream, "UpdateAudioStream");
     dukglue_register_function(ctx, &IsAudioStreamProcessed, "IsAudioStreamProcessed");
     dukglue_register_function(ctx, &PlayAudioStream, "PlayAudioStream");
     dukglue_register_function(ctx, &PauseAudioStream, "PauseAudioStream");
@@ -2179,7 +2125,7 @@ void raylib_duktape_gen(duk_context* ctx) {
     dukglue_register_function(ctx, &SetAudioStreamPitch, "SetAudioStreamPitch");
     dukglue_register_function(ctx, &SetAudioStreamPan, "SetAudioStreamPan");
     dukglue_register_function(ctx, &SetAudioStreamBufferSizeDefault, "SetAudioStreamBufferSizeDefault");
-    // Skipped: SetAudioStreamCallback
-    // Skipped: AttachAudioStreamProcessor
-    // Skipped: DetachAudioStreamProcessor
+    // dukglue_register_function(ctx, &SetAudioStreamCallback, "SetAudioStreamCallback");
+    // dukglue_register_function(ctx, &AttachAudioStreamProcessor, "AttachAudioStreamProcessor");
+    // dukglue_register_function(ctx, &DetachAudioStreamProcessor, "DetachAudioStreamProcessor");
 }
