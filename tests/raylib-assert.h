@@ -170,6 +170,7 @@ extern "C" {
 
 // Assert()
 #ifdef RAYLIB_ASSERT_NDEBUG
+#define Assert_0()
 #define Assert_1(condition)
 #define Assert_2(condition, message)
 #define Assert_3(condition, message, p1)
@@ -178,6 +179,7 @@ extern "C" {
 #define Assert_6(condition, message, p1, p2, p3, p4)
 #define Assert_7(condition, message, p1, p2, p3, p4, p5)
 #else
+#define Assert_0() AssertFail_1("No condition provided for Assert()")
 #define Assert_1(condition) Assert_2(condition, #condition)
 #define Assert_2(condition, message) do { if (!((bool)(condition))) { TraceLog(RAYLIB_ASSERT_LOG, "ASSERT: %s (%s:%i)", message, __FILE__, __LINE__); } } while(0)
 #define Assert_3(condition, message, p1) Assert_2(condition, TextFormat(message, p1))
@@ -188,6 +190,7 @@ extern "C" {
 #endif
 
 // AssertEqual()
+#define AssertEqual_0() AssertFail_1("No condition provided for AssertEqual()")
 #define AssertEqual_1(condition) Assert_2(condition, #condition)
 #define AssertEqual_2(actual, expected) Assert_4((actual) == (expected), "AssertEqual(%s, %s) - Provided arguments are not equal", #actual, #expected)
 #define AssertEqual_3(actual, expected, message) Assert_2((actual) == (expected), message)
@@ -197,6 +200,7 @@ extern "C" {
 #define AssertEqual_7(actual, expected, message, p1, p2, p3, p4) Assert_6((actual) == (expected), message, p1, p2, p3, p4)
 
 // AssertNotEqual()
+#define AssertNotEqual_0() AssertFail_1("No condition provided for AssertNotEqual()")
 #define AssertNotEqual_1(condition) AssertNot_2(condition, #condition)
 #define AssertNotEqual_2(actual, expected) Assert_4((actual) != (expected), "AssertNotEqual(%s, %s) - Provided arguments are equal", #actual, #expected)
 #define AssertNotEqual_3(actual, expected, message) Assert_2((actual) != (expected), message)
@@ -206,6 +210,7 @@ extern "C" {
 #define AssertNotEqual_7(actual, expected, message, p1, p2, p3, p4) Assert_6((actual) != (expected), message, p1, p2, p3, p4)
 
 // AssertNot()
+#define AssertNot_0() AssertFail_1("No condition provided for AssertNot()")
 #define AssertNot_1(condition) Assert_2(!(bool)(condition), #condition)
 #define AssertNot_2(condition, message) Assert_2(!(bool)(condition), message)
 #define AssertNot_3(condition, message, p1) Assert_3(!(bool)(condition), message, p1)
@@ -260,7 +265,7 @@ extern "C" {
 #define AssertImageSame_2(image1, image2)
 #define AssertImageSame_3(image1, image2, message)
 #define AssertImageSame_4(image1, image2, message, p1)
-#define AssertImageSame_5(image1, image2, message, p1, p2,)
+#define AssertImageSame_5(image1, image2, message, p1, p2)
 #define AssertImageSame_6(image1, image2, message, p1, p2, p3)
 #define AssertImageSame_7(image1, image2, message, p1, p2, p3, p4)
 #else
@@ -296,6 +301,16 @@ extern "C" {
 #endif
 
 // AssertColorSame()
+#ifdef RAYLIB_ASSERT_NDEBUG
+#define AssertColorSame_0()
+#define AssertColorSame_1(color)
+#define AssertColorSame_2(color1, color2)
+#define AssertColorSame_3(color1, color2, message)
+#define AssertColorSame_4(color1, color2, message, p1)
+#define AssertColorSame_5(color1, color2, message, p1, p2)
+#define AssertColorSame_6(color1, color2, message, p1, p2, p3)
+#define AssertColorSame_7(color1, color2, message, p1, p2, p3, p4)
+#else
 #define AssertColorSame_0() AssertFail_1("Colors not provided to AssertColorSame()")
 #define AssertColorSame_1(color) AssertFail_1("Expected two colors for AssertColorSame()")
 #define AssertColorSame_2(color1, color2) AssertColorSame_5(color1, color2, "AssertColorSame(%s, %s) - Colors do not match", #color1, #color2)
@@ -308,6 +323,7 @@ extern "C" {
 #define AssertColorSame_5(color1, color2, message, p1, p2) AssertColorSame_3(color1, color2, TextFormat(message, p1, p2))
 #define AssertColorSame_6(color1, color2, message, p1, p2, p3) AssertColorSame_3(color1, color2, TextFormat(message, p1, p2, p3))
 #define AssertColorSame_7(color1, color2, message, p1, p2, p3, p4) AssertColorSame_3(color1, color2, TextFormat(message, p1, p2, p3, p4))
+#endif
 
 #ifdef __cplusplus
 }
